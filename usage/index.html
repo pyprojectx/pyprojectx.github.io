@@ -348,19 +348,25 @@ This will be the last release before going stable.
     Initialize a new or existing project
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Initialize a new or existing project">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#plain-python-project" class="md-nav__link">
     Plain Python project
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#poetry-project" class="md-nav__link">
     Poetry project
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -461,19 +467,25 @@ This will be the last release before going stable.
     Initialize a new or existing project
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="Initialize a new or existing project">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#plain-python-project" class="md-nav__link">
     Plain Python project
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#poetry-project" class="md-nav__link">
     Poetry project
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -525,7 +537,7 @@ This will be the last release before going stable.
 or a <a href="https://pdm.fming.dev/">PDM</a> project.</p>
 <p>Cd into your existing project directory (or create a new empty directory), download the wrapper scripts
 and run the init command.</p>
-<h2 id="plain-python-project">Plain Python project<a class="headerlink" href="#plain-python-project" title="Permanent link">#</a></h2>
+<h3 id="plain-python-project">Plain Python project<a class="headerlink" href="#plain-python-project" title="Permanent link">#</a></h3>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Linux/Mac</label><label for="__tabbed_1_2">Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -541,7 +553,7 @@ and run the init command.</p>
 </div>
 </div>
 <p>Now you can use the <a href="/usage/#install-the-global-px-script"><code>px</code></a> or <code>pw</code> script to show available tools and commands: <code>px -i</code>.</p>
-<h2 id="poetry-project">Poetry project<a class="headerlink" href="#poetry-project" title="Permanent link">#</a></h2>
+<h3 id="poetry-project">Poetry project<a class="headerlink" href="#poetry-project" title="Permanent link">#</a></h3>
 <p>Start the interactive poetry initializer:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Linux/Mac</label><label for="__tabbed_2_2">Windows</label></div>
 <div class="tabbed-content">
@@ -568,7 +580,7 @@ This makes Poetry create a <code>.venv</code> in your project directory instead 
 It makes it easier to locate files and to keep your system clean when removing the project.</p>
 </div>
 <h2 id="pdm-project">PDM project<a class="headerlink" href="#pdm-project" title="Permanent link">#</a></h2>
-<p>Start the interactive pdm initializer:</p>
+<p>Start the interactive PDM initializer:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Linux/Mac</label><label for="__tabbed_3_2">Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -580,11 +592,6 @@ It makes it easier to locate files and to keep your system clean when removing t
 <div class="highlight"><pre><span></span><code><span class="nb">Invoke-WebRequest</span> <span class="n">https</span><span class="p">://</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">pyprojectx</span><span class="p">/</span><span class="n">pyprojectx</span><span class="p">/</span><span class="n">releases</span><span class="p">/</span><span class="n">latest</span><span class="p">/</span><span class="n">download</span><span class="p">/</span><span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span> <span class="n">-OutFile</span> <span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span><span class="p">;</span> <span class="nb">Expand-Archive</span> <span class="n">-Path</span> <span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span> <span class="n">-DestinationPath</span> <span class="p">.;</span> <span class="nb">Remove-Item</span> <span class="n">-Path</span> <span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span>
 <span class="p">.\</span><span class="n">pw</span> <span class="p">-</span><span class="n">-init</span> <span class="n">pdm</span>
 </code></pre></div>
-<ul>
-<li>Start the interactive PDM init command:
-   <div class="highlight"><pre><span></span><code>px --init pdm
-</code></pre></div></li>
-</ul>
 </div>
 </div>
 </div>
