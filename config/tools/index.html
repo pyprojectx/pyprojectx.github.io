@@ -482,7 +482,7 @@ This will be the last release before going stable.
 <div class="admonition info">
 <p class="admonition-title"><code>px</code> or <code>pw</code>?</p>
 <p>This section assumes that you installed the <a href="/usage/#install-the-global-px-script">px utility script</a>.
-Otherwise, you need to replace <code>px</code> with <code>./pw</code> (Linux, Mac) or <code>pw</code> (Windows).</p>
+Otherwise, you need to replace <code>px</code> with <code>./pw</code> (Linux, Mac) or <code>.\pw</code> (Windows PowerShell).</p>
 </div>
 <h2 id="tool-configuration">Tool configuration<a class="headerlink" href="#tool-configuration" title="Permanent link">#</a></h2>
 <p>Pyprojectx creates an isolated virtual environment for each configured tool (or set of tools).</p>
@@ -508,8 +508,8 @@ px black my_package --diff
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">pw</span> <span class="n">poetry</span> <span class="p">-</span><span class="n">-help</span>
-<span class="n">pw</span> <span class="n">black</span> <span class="n">my_package</span> <span class="p">-</span><span class="n">-diff</span>
+<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">pw</span> <span class="n">poetry</span> <span class="p">-</span><span class="n">-help</span>
+<span class="p">.\</span><span class="n">pw</span> <span class="n">black</span> <span class="n">my_package</span> <span class="p">-</span><span class="n">-diff</span>
 </code></pre></div>
 </div>
 </div>
