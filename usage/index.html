@@ -530,7 +530,39 @@ This will be the last release before going stable.
 
 <h1 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">#</a></h1>
 <h2 id="cli">CLI<a class="headerlink" href="#cli" title="Permanent link">#</a></h2>
-<div class="highlight"><pre><span></span><code>
+<div class="highlight"><pre><span></span><code>usage: pyprojectx [-h] [--version] [--toml TOML] [--install-dir INSTALL_DIR]
+                  [--force-install] [--verbose] [--quiet] [--info] [--init]
+                  ...
+
+Execute commands or aliases defined in the [tool.pyprojectx] section of
+pyproject.toml. Use the -i or --info option to see available tools and
+aliases.
+
+positional arguments:
+  command               The command/alias with optional arguments to execute.
+
+options:
+  -h, --help            show this help message and exit
+  --version             show program&#39;s version number and exit
+  --toml TOML, -t TOML  The toml config file. Defaults to &#39;pyproject.toml&#39; in
+                        the same directory as the pw script.
+  --install-dir INSTALL_DIR
+                        The directory where all tools (including pyprojectx)
+                        are installed; defaults to the PYPROJECTX_INSTALL_DIR
+                        environment value if set, else &#39;.pyprojectx&#39; in the
+                        same directory as the invoked pw script
+  --force-install, -f   Force clean installation of the virtual environment
+                        used to run cmd, if any
+  --verbose, -v         Give more output. This option is additive and can be
+                        used up to 2 times.
+  --quiet, -q           Suppress output
+  --info, -i            Show the configuration details of a command in stead
+                        of running it. If the command is not configured as
+                        tool or alias, a list with all available tools and
+                        aliases is shown.
+  --init                Create or prepare a pyproject.toml and pyprojectx
+                        wrapper scripts. Run with &#39;--init help&#39; to show
+                        available init options
 </code></pre></div>
 <h2 id="initialize-a-new-or-existing-project">Initialize a new or existing project<a class="headerlink" href="#initialize-a-new-or-existing-project" title="Permanent link">#</a></h2>
 <p>Pyprojectx can create or update a <code>pyproject.toml</code> file for either a plain, a <a href="https://python-poetry.org/">Poetry</a>
