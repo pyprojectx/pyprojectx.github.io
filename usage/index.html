@@ -359,6 +359,13 @@ This will be the last release before going stable.
 </li>
         
           <li class="md-nav__item">
+  <a href="#pdm-project" class="md-nav__link">
+    PDM project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#poetry-project" class="md-nav__link">
     Poetry project
   </a>
@@ -367,13 +374,6 @@ This will be the last release before going stable.
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pdm-project" class="md-nav__link">
-    PDM project
-  </a>
   
 </li>
       
@@ -478,6 +478,13 @@ This will be the last release before going stable.
 </li>
         
           <li class="md-nav__item">
+  <a href="#pdm-project" class="md-nav__link">
+    PDM project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#poetry-project" class="md-nav__link">
     Poetry project
   </a>
@@ -486,13 +493,6 @@ This will be the last release before going stable.
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pdm-project" class="md-nav__link">
-    PDM project
-  </a>
   
 </li>
       
@@ -565,8 +565,8 @@ options:
                         available init options
 </code></pre></div>
 <h2 id="initialize-a-new-or-existing-project">Initialize a new or existing project<a class="headerlink" href="#initialize-a-new-or-existing-project" title="Permanent link">#</a></h2>
-<p>Pyprojectx can create or update a <code>pyproject.toml</code> file for either a plain, a <a href="https://python-poetry.org/">Poetry</a>
-or a <a href="https://pdm.fming.dev/">PDM</a> project.</p>
+<p>Pyprojectx can create or update a <code>pyproject.toml</code> file for either a plain, a <a href="https://pdm.fming.dev/">PDM</a>
+or a <a href="https://python-poetry.org/">Poetry</a> project.</p>
 <p>Cd into your existing project directory (or create a new empty directory), download the wrapper scripts,
 and run the init command.</p>
 <div class="admonition tip">
@@ -593,35 +593,9 @@ git update-index --chmod<span class="o">=</span>+x pw
 </div>
 </div>
 <p>Now you can use the <a href="/usage/#install-the-global-px-script"><code>px</code></a> or <code>pw</code> script to show available tools and commands: <code>px -i</code>.</p>
-<h3 id="poetry-project">Poetry project<a class="headerlink" href="#poetry-project" title="Permanent link">#</a></h3>
-<p>Start the interactive poetry initializer:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Linux/Mac</label><label for="__tabbed_2_2">Windows</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl -LO https://github.com/pyprojectx/pyprojectx/releases/latest/download/wrappers.zip <span class="o">&amp;&amp;</span> unzip wrappers.zip <span class="o">&amp;&amp;</span> rm -f wrappers.zip
-./pw --init poetry
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nb">Invoke-WebRequest</span> <span class="n">https</span><span class="p">://</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">pyprojectx</span><span class="p">/</span><span class="n">pyprojectx</span><span class="p">/</span><span class="n">releases</span><span class="p">/</span><span class="n">latest</span><span class="p">/</span><span class="n">download</span><span class="p">/</span><span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span> <span class="n">-OutFile</span> <span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span><span class="p">;</span> <span class="nb">Expand-Archive</span> <span class="n">-Path</span> <span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span> <span class="n">-DestinationPath</span> <span class="p">.;</span> <span class="nb">Remove-Item</span> <span class="n">-Path</span> <span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span>
-<span class="p">.\</span><span class="n">pw</span> <span class="p">-</span><span class="n">-init</span> <span class="n">poetry</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<p>Now you can run any Poetry command with the <a href="/usage/#install-the-global-px-script"><code>px</code></a> or <code>pw</code> script, f.e. <code>px poetry install</code></p>
-<div class="admonition info">
-<p class="admonition-title">In-project virtual environment</p>
-<p><code>--init poetry</code> will also copy a <code>poetry.toml</code> to your project directory:
-<div class="highlight"><pre><span></span><code><span class="k">[virtualenvs]</span><span class="w"></span>
-<span class="n">in-project</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
-</code></pre></div>
-This makes Poetry create a <code>.venv</code> in your project directory instead of somewhere in your home directory.
-It makes it easier to locate files and to keep your system clean when removing the project.</p>
-</div>
-<h2 id="pdm-project">PDM project<a class="headerlink" href="#pdm-project" title="Permanent link">#</a></h2>
+<h3 id="pdm-project">PDM project<a class="headerlink" href="#pdm-project" title="Permanent link">#</a></h3>
 <p>Start the interactive PDM initializer:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Linux/Mac</label><label for="__tabbed_3_2">Windows</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Linux/Mac</label><label for="__tabbed_2_2">Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>curl -LO https://github.com/pyprojectx/pyprojectx/releases/latest/download/wrappers.zip <span class="o">&amp;&amp;</span> unzip wrappers.zip <span class="o">&amp;&amp;</span> rm -f wrappers.zip
@@ -636,6 +610,34 @@ It makes it easier to locate files and to keep your system clean when removing t
 </div>
 </div>
 <p>Now you can run any pdm command with the <a href="/usage/#install-the-global-px-script"><code>px</code></a> or <code>pw</code> script, f.e. <code>px pdm install</code></p>
+<p>Any extra arguments are passed to the PDM init command, f.e. <code>./pw --init pdm --non-interactive</code>.</p>
+<h3 id="poetry-project">Poetry project<a class="headerlink" href="#poetry-project" title="Permanent link">#</a></h3>
+<p>Start the interactive poetry initializer:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Linux/Mac</label><label for="__tabbed_3_2">Windows</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>curl -LO https://github.com/pyprojectx/pyprojectx/releases/latest/download/wrappers.zip <span class="o">&amp;&amp;</span> unzip wrappers.zip <span class="o">&amp;&amp;</span> rm -f wrappers.zip
+./pw --init poetry
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nb">Invoke-WebRequest</span> <span class="n">https</span><span class="p">://</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">pyprojectx</span><span class="p">/</span><span class="n">pyprojectx</span><span class="p">/</span><span class="n">releases</span><span class="p">/</span><span class="n">latest</span><span class="p">/</span><span class="n">download</span><span class="p">/</span><span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span> <span class="n">-OutFile</span> <span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span><span class="p">;</span> <span class="nb">Expand-Archive</span> <span class="n">-Path</span> <span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span> <span class="n">-DestinationPath</span> <span class="p">.;</span> <span class="nb">Remove-Item</span> <span class="n">-Path</span> <span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span>
+<span class="p">.\</span><span class="n">pw</span> <span class="p">-</span><span class="n">-init</span> <span class="n">poetry</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Now you can run any Poetry command with the <a href="/usage/#install-the-global-px-script"><code>px</code></a> or <code>pw</code> script, f.e. <code>px poetry install</code></p>
+<p>Any extra arguments are passed to the Poetry init command, f.e. <code>./pw --init poetry --no-interaction</code>.</p>
+<div class="admonition info">
+<p class="admonition-title">In-project virtual environment</p>
+<p><code>--init poetry</code> will also copy a <code>poetry.toml</code> to your project directory:
+<div class="highlight"><pre><span></span><code><span class="k">[virtualenvs]</span><span class="w"></span>
+<span class="n">in-project</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+</code></pre></div>
+This makes Poetry create a <code>.venv</code> in your project directory instead of somewhere in your home directory.
+It makes it easier to locate files and to keep your system clean when removing the project.</p>
+</div>
 <h2 id="install-the-global-px-script">Install the global <code>px</code> script<a class="headerlink" href="#install-the-global-px-script" title="Permanent link">#</a></h2>
 <p>Pyprojectx provides a small <code>px</code> script that delegates everything to the <code>pw</code> wrapper script.
 The <code>pw</code> script is searched in the current working directory and its parents.</p>
