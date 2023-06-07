@@ -15,7 +15,7 @@
         <link rel="next" href="../dev-dependencies/">
       
       <link rel="icon" href="../assets/px.svg">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.9">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
     
     
       
@@ -23,10 +23,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.85bb2934.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.26e3688c.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.a6bdf11c.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ecc896b0.min.css">
       
       
 
@@ -537,6 +537,7 @@
 <h2 id="cli">CLI<a class="headerlink" href="#cli" title="Permanent link">#</a></h2>
 <div class="highlight"><pre><span></span><code>usage: pyprojectx [-h] [--version] [--toml TOML] [--install-dir INSTALL_DIR]
                   [--force-install] [--verbose] [--quiet] [--info] [--init]
+                  [--upgrade]
                   ...
 
 Execute commands or aliases defined in the [tool.pyprojectx] section of
@@ -568,6 +569,7 @@ options:
   --init                Create or prepare a pyproject.toml and pyprojectx
                         wrapper scripts. Run with &#39;--init help&#39; to show
                         available init options
+  --upgrade             Download the latest pyprojectx wrapper scripts.
 </code></pre></div>
 <h2 id="initialize-a-new-or-existing-project">Initialize a new or existing project<a class="headerlink" href="#initialize-a-new-or-existing-project" title="Permanent link">#</a></h2>
 <p>Pyprojectx can create or update a <code>pyproject.toml</code> file for either a plain, a <a href="https://pdm.fming.dev/">PDM</a>
@@ -662,9 +664,11 @@ This also works from subdirectories: <code>../../pw</code> can also be replaced 
 </div>
 </div>
 <h2 id="global-tools">Global tools<a class="headerlink" href="#global-tools" title="Permanent link">#</a></h2>
-<p>Besides the <code>px</code> script, <code>pw --init global</code> also copies other files:
-* <code>pxg</code> script in <code>~/.pyprojectx</code>
-* <code>pw</code> script and example <code>pyproject.toml</code> in <code>~/.pyprojectx/global</code></p>
+<p>Besides the <code>px</code> script, <code>pw --init global</code> also copies other files:</p>
+<ul>
+<li><code>pxg</code> script in <code>~/.pyprojectx</code></li>
+<li><code>pw</code> script and example <code>pyproject.toml</code> in <code>~/.pyprojectx/global</code></li>
+</ul>
 <p><code>pxg</code> can be uses as a lightweight <a href="https://pypa.github.io/pipx/">pipx</a> to install tools globally.</p>
 <p>Example usage: <code>pyproject.toml</code> contains by default <a href="https://httpie.io/">httpie</a> so you can make http requests:
 <div class="highlight"><pre><span></span><code>pxg<span class="w"> </span>http<span class="w"> </span>POST<span class="w"> </span>pie.dev/post<span class="w"> </span><span class="nv">hello</span><span class="o">=</span>world
@@ -740,7 +744,7 @@ This also works from subdirectories: <code>../../pw</code> can also be replaced 
     <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.fac441b0.min.js"></script>
+      <script src="../assets/javascripts/bundle.b4d07000.min.js"></script>
       
     
   </body>

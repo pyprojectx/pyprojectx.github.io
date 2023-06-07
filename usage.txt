@@ -1,5 +1,6 @@
 usage: pyprojectx [-h] [--version] [--toml TOML] [--install-dir INSTALL_DIR]
                   [--force-install] [--verbose] [--quiet] [--info] [--init]
+                  [--upgrade]
                   ...
 
 Execute commands or aliases defined in the [tool.pyprojectx] section of
@@ -31,3 +32,4 @@ options:
   --init                Create or prepare a pyproject.toml and pyprojectx
                         wrapper scripts. Run with '--init help' to show
                         available init options
+  --upgrade             Download the latest pyprojectx wrapper scripts.
