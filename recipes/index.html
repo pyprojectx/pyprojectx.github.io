@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../assets/px.svg">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.2">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.3">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.d451bc0e.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.79e020e9.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.a5377069.min.css">
@@ -536,8 +536,7 @@
 <span class="c1"># the first time that a poetry command is invoked, we make sure that pre-commit hooks are installed, so we can&#39;t forget it</span>
 <span class="n">poetry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">requirements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;poetry==1.1.13&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">post-install</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;pw@pre-commit install&quot;</span><span class="w"> </span><span class="p">}</span>
 <span class="n">black</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;black==22.1.0&quot;</span>
-<span class="n">isort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;isort==5.10.1&quot;</span>
-<span class="n">pylint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;pylint==2.12.2&quot;</span>
+<span class="n">ruff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ruff==0.0.291&quot;</span>
 <span class="n">pre-commit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;pre-commit&quot;</span>
 <span class="n">mkdocs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;mkdocs ~=1.2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;mkdocs-material ~=8.2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;mkdocstrings[python] ~=0.18&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;markdown-include ~=0.6&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
 
@@ -547,14 +546,14 @@
 <span class="n">outdated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;poetry show --outdated&quot;</span>
 <span class="n">clean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;rm -r .venv .pytest_cache dist&quot;</span>
 <span class="n">black</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;black src tests&quot;</span>
-<span class="n">isort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;isort src tests&quot;</span>
+<span class="n">ruff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ruff src tests --fix&quot;</span>
 <span class="n">unit-test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;poetry run pytest tests/unit&quot;</span>
 <span class="n">integration-test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;poetry run pytest tests/integration&quot;</span>
 <span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;pw@unit-test &amp;&amp; pw@integration-test&quot;</span>
-<span class="n">check-pylint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;pylint src tests&quot;</span>
+<span class="n">check-ruff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ruff src tests&quot;</span>
 <span class="n">check-black</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;black src tests --check&quot;</span>
 <span class="c1"># run check before pushing to git and your build will never break</span>
-<span class="n">check</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;pw@check-black &amp;&amp; pw@check-pylint &amp;&amp; pw@test&quot;</span>
+<span class="n">check</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;pw@check-black &amp;&amp; pw@check-ruff &amp;&amp; pw@test&quot;</span>
 <span class="c1"># run the same build command on your laptop or CI/CD server</span>
 <span class="n">build</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;pw@install &amp;&amp; pw@check &amp;&amp; pw@poetry build&quot;</span>
 
@@ -683,10 +682,11 @@ Just run <code>px notebook</code> or even <code>px n</code></p>
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
+    
     <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.726fbb30.min.js"></script>
+      <script src="../assets/javascripts/bundle.6eac0284.min.js"></script>
       
     
   </body>
