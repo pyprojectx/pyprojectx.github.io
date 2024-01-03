@@ -1,7 +1,8 @@
-usage: pyprojectx [-h] [--version] [--toml TOML] [--install-dir INSTALL_DIR]
-                  [--force-install] [--verbose] [--quiet] [--info] [--init]
-                  [--upgrade]
-                  ...
+usage: pw [-h] [--version] [--toml TOML] [--install-dir INSTALL_DIR]
+          [--force-install] [--install-context INSTALL_CONTEXT] [--verbose]
+          [--quiet] [--info] [--add package] [--lock] [--install-px]
+          [--upgrade]
+          ...
 
 Execute commands or aliases defined in the [tool.pyprojectx] section of
 pyproject.toml. Use the -i or --info option to see available tools and
@@ -22,14 +23,19 @@ options:
                         same directory as the invoked pw script
   --force-install, -f   Force clean installation of the virtual environment
                         used to run cmd, if any
+  --install-context INSTALL_CONTEXT
+                        Install a tool context without running a command.
   --verbose, -v         Give more output. This option is additive and can be
                         used up to 2 times.
   --quiet, -q           Suppress output
-  --info, -i            Show the configuration details of a command in stead
-                        of running it. If the command is not configured as
-                        tool or alias, a list with all available tools and
-                        aliases is shown.
-  --init                Create or prepare a pyproject.toml and pyprojectx
-                        wrapper scripts. Run with '--init help' to show
-                        available init options
+  --info, -i            Show the configuration details of a command instead of
+                        running it. If no command is specified, a list with
+                        all available tools and aliases is shown.
+  --add package         Add a package to a tool context. The package needs to
+                        be specified as [context:] <pip requirement
+                        specifier>.If no context is specified, the package is
+                        added to the main context.
+  --lock                Write all dependencies of all tool contexts to
+                        'pw.lock' to guarantee reproducible outcomes.
+  --install-px          Install the px and pxg scripts in your home directory.
   --upgrade             Download the latest pyprojectx wrapper scripts.
