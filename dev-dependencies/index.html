@@ -300,7 +300,7 @@
         
   
   <span class="md-ellipsis">
-    Manage Tools as Dev dependencies
+    Manage tools as dev dependencies
   </span>
   
 
@@ -322,6 +322,48 @@
   
   <span class="md-ellipsis">
     Shortcut common commands with aliases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config/scripts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Run Python scripts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config/defaults/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configurable defaults
   </span>
   
 
@@ -459,6 +501,12 @@ will likely be downgraded to older versions. Or worse: your project fails to ins
 as Poetry or PDM dev-dependencies. Other tools and utilities can be managed by Pyprojectx in order to get
 reproducible builds.</p>
 </div>
+<h1 id="the-unreliable-pip-install">The unreliable pip install<a class="headerlink" href="#the-unreliable-pip-install" title="Permanent link">#</a></h1>
+<p>One would expect that <code>pip install tool-x==1.2.3</code> always installs exactly the same version of <em>tool-x</em>.
+Unfortunately, this is not the case because a most python packages do not pin the versions of their dependencies.</p>
+<p>This means that released versions of tools <strong>can be broken at any time</strong> by a new release of one of their dependencies.</p>
+<p>This is exactly what happened with <a href="https://github.com/pdm-project/pdm/issues/1883">PDM 2.5.3</a>.</p>
+<p>For this reason, all the dependencies of pyprojectx are locked when publishing to <a href="https://pypi.org/project/pyprojectx/">PyPI</a>.</p>
 
 
 

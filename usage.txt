@@ -1,7 +1,6 @@
 usage: pw [-h] [--version] [--toml TOML] [--install-dir INSTALL_DIR]
-          [--force-install] [--install-context INSTALL_CONTEXT] [--verbose]
-          [--quiet] [--info] [--add package] [--lock] [--install-px]
-          [--upgrade]
+          [--force-install] [--install-context context] [--verbose] [--quiet]
+          [--info] [--add package] [--lock] [--install-px] [--upgrade]
           ...
 
 Execute commands or aliases defined in the [tool.pyprojectx] section of
@@ -23,8 +22,9 @@ options:
                         same directory as the invoked pw script
   --force-install, -f   Force clean installation of the virtual environment
                         used to run cmd, if any
-  --install-context INSTALL_CONTEXT
-                        Install a tool context without running a command.
+  --install-context context
+                        Install a tool context without actually running any
+                        command.
   --verbose, -v         Give more output. This option is additive and can be
                         used up to 2 times.
   --quiet, -q           Suppress output

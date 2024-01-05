@@ -12,7 +12,7 @@
         <link rel="prev" href="../tools/">
       
       
-        <link rel="next" href="../../usage/">
+        <link rel="next" href="../scripts/">
       
       
       <link rel="icon" href="../../assets/px.svg">
@@ -302,7 +302,7 @@
         
   
   <span class="md-ellipsis">
-    Manage Tools as Dev dependencies
+    Manage tools as dev dependencies
   </span>
   
 
@@ -392,9 +392,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tools-and-packages-with-multiple-scripts" class="md-nav__link">
+  <a href="#alias-configuration" class="md-nav__link">
     <span class="md-ellipsis">
-      Tools and packages with multiple scripts
+      Alias configuration
     </span>
   </a>
   
@@ -413,6 +413,48 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../scripts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Run Python scripts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../defaults/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configurable defaults
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -539,9 +581,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tools-and-packages-with-multiple-scripts" class="md-nav__link">
+  <a href="#alias-configuration" class="md-nav__link">
     <span class="md-ellipsis">
-      Tools and packages with multiple scripts
+      Alias configuration
     </span>
   </a>
   
@@ -576,95 +618,102 @@
 
 <h1 id="shortcut-common-commands-with-aliases">Shortcut common commands with aliases<a class="headerlink" href="#shortcut-common-commands-with-aliases" title="Permanent link">#</a></h1>
 <p>Aliases allow you to define shortcuts for common commands and simple shell scripts.</p>
-<p>Tools that expose multiple scripts, also require aliases to make all scripts available via the <code>pw</code> wrapper script.</p>
 <div class="admonition info">
 <p class="admonition-title"><code>px</code> or <code>pw</code>?</p>
 <p>This section assumes that you installed the <a href="/usage/#install-the-global-px-script">px utility script</a>.
-Otherwise, you need to replace <code>px</code> with <code>./pw</code> (Linux, Mac) or <code>.\pw</code> (Windows PowerShell).</p>
+Otherwise, you need to replace <code>px</code> with <code>./pw</code> (Linux, Mac) or <code>pw</code> (Windows PowerShell).</p>
 </div>
 <h2 id="defining-shortcuts">Defining shortcuts<a class="headerlink" href="#defining-shortcuts" title="Permanent link">#</a></h2>
-<p>You can avoid a lot of typing by aliasing commands that you use a lot. Example:
+<p>You can avoid a lot of typing by aliasing commands that you use a lot. Example:</p>
 <div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx.aliases]</span>
 <span class="n">install</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;poetry install&quot;</span>
 <span class="n">run</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;poetry run&quot;</span>
-</code></pre></div></p>
+</code></pre></div>
 <p>With above aliases, you can type <code>px install</code> instead of the usual <code>poetry install</code>. Depending on your other aliases,
 this can be even shortened to <code>px i</code> (see <a href="/config/aliases/#abbreviations">alias abbreviations</a>).</p>
 <p>All arguments are passed to the underlying command or script,
 making <code>px run my-script --foo</code> equivalent to <code>poetry run my-script --foo</code>.</p>
 <h2 id="shell-scripts">Shell scripts<a class="headerlink" href="#shell-scripts" title="Permanent link">#</a></h2>
-<p>Shell scripts can also be aliased:
+<p>Shell scripts can also be aliased:</p>
 <div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx.aliases]</span>
 <span class="n">prepare</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;mkdir build &amp;&amp; mkdir generated&quot;</span>
 <span class="n">clean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;rm -rf build generated&quot;</span>
-</code></pre></div></p>
-<p>You can override aliases for a specific OS:
+</code></pre></div>
+<p>You can override aliases for a specific OS:</p>
 <div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx.os.win.aliases]</span>
 <span class="n">clean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;rd /s /q build generated&quot;</span>
-</code></pre></div></p>
+</code></pre></div>
 <p>Above <code>clean</code> alias will override the default one on Windows
 (in fact on all operating systems where <code>sys.platform.startswith("win")==True</code>).</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip: use px-utils for common file operations</p>
+<p>Use <a href="https://github.com/pyprojectx/px-utils">px-utils</a> to create, copy, move, delete, ... files and directories cross-platform.
+<div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx.os.win.aliases]</span>
+<span class="n">clean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pxrm build generated&quot;</span>
+</code></pre></div></p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Aliases are interpreted by the OS shell</p>
 <p>The alias <code>show-path = "echo %PATH%"</code> will print the PATH environment variable on Windows, but will print
 literally <code>%PATH%</code> on another OS.</p>
 </div>
 <h2 id="combining-aliases">Combining aliases<a class="headerlink" href="#combining-aliases" title="Permanent link">#</a></h2>
-<p>Use the <code>pw@</code> prefix to call alias from another alias.</p>
+<p>Use the <code>@</code> prefix to call an alias or <a href="/config/scripts">script</a> from another alias.</p>
 <div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx.aliases]</span>
 <span class="n">unit-test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pdm run pytest tests/unit&quot;</span>
 <span class="n">integration-test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pdm run pytest tests/integration&quot;</span>
-<span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pw@unit-test &amp;&amp; pw@integration-test&quot;</span>
+<span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;@unit-test &amp;&amp; @integration-test&quot;</span><span class="p">]</span>
 <span class="c1"># a list of commands behaves the same as when combined with &#39;&amp;&amp;&#39;</span>
 <span class="n">build</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;pw@install&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;pw@test&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;pw@pdm build&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;@install&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;@test&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;@pdm build&quot;</span><span class="p">,</span>
 <span class="p">]</span>
 </code></pre></div>
-<p><code>pw@</code> is substituted with the initial wrapper command + arguments.</p>
-<p>So running <code>px -v test</code> will expand to
+<p><code>[pw]@</code> is substituted with the initial wrapper command + arguments.</p>
+<p>So running <code>px -v test</code> will expand to</p>
 <div class="highlight"><pre><span></span><code>px -v poetry run pytest tests/unit &amp;&amp; px -v  poetry run pytest tests/integration
-</code></pre></div></p>
-<h2 id="tools-and-packages-with-multiple-scripts">Tools and packages with multiple scripts<a class="headerlink" href="#tools-and-packages-with-multiple-scripts" title="Permanent link">#</a></h2>
-<p>When installing multiple tools/packages together, or when using a tool that installs multiple scripts,
-you can define aliases to expose additional scripts besides the main script.</p>
-<p>By starting an alias with <code>@tool-name:</code>, where <em>tool-name</em> is the key of a <code>[tool.pyprojectx]</code> entry, the alias always
-runs in the context of the virtual environment that is created for <code>tool-name</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx]</span>
-<span class="c1"># available scripts: flake8, pyflakes, black, ...</span>
-<span class="n">flake8</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;flake8 ~=4.0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;flake8-black ~=0.3&quot;</span><span class="p">]</span>
-
-<span class="k">[tool.pyprojectx.aliases]</span>
-<span class="c1"># expose black that is installed together with flake8-black</span>
-<span class="n">black</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;@flake8: black&quot;</span>
 </code></pre></div>
-<p>Now you can run <code>black</code> as usual:
-<div class="highlight"><pre><span></span><code>px<span class="w"> </span>black<span class="w"> </span>--version
-<span class="c1"># black, 22.1.0 (compiled: yes)</span>
-</code></pre></div></p>
+<h2 id="alias-configuration">Alias configuration<a class="headerlink" href="#alias-configuration" title="Permanent link">#</a></h2>
+<p>Besides simple commands, aliases provide some configuration options:</p>
+<div class="highlight"><pre><span></span><code><span class="n">notebook</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cmd</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s1">&#39;jupyter lab&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ctx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s1">&#39;jupyter&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">env</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">JUPYTERLAB_DIR</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;docs&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<ul>
+<li><code>cmd</code>: the command to run</li>
+<li><code>ctx</code>: the tool context in which the command is run; defaults to <code>main</code></li>
+<li><code>env</code>: additional environment variables to set</li>
+<li><code>cwd</code>: the working directory in which the command is run; defaults to <em>@PROJECT_DIR</em>, the directory containing
+    <em>pyproject.toml</em>. This default ensures that commands can be run from any subdirectory of the project.</li>
+<li><code>shell</code>: the shell used to run the command, overrides the default shell of the tool context</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Default CWD changed in 2.0.0</p>
+<p>Prior to Pyprojectx 2.0.0, aliases where always executed in the current working directory.
+As of 2.0.0, aliases run by default in the root directory of the project (where <em>pyproject.toml</em> is located),
+unless explicitly overridden with the <code>cwd</code> option.</p>
+</div>
 <h2 id="abbreviations">Abbreviations<a class="headerlink" href="#abbreviations" title="Permanent link">#</a></h2>
 <p>To run an alias, you only have to type the portion of the alias name that uniquely identifies the alias within
 the project. So we don't have to type the complete name if we can use a shorter version.
 As a bonus Pyprojectx also supports camel case to abbreviate an alias name.</p>
 <p>When you define an alias named either <code>foo-bar</code> or <code>fooBar</code>, then following commands are equivalent
-(provided they don't match any other alias):
+(provided they don't match any other alias):</p>
 <div class="highlight"><pre><span></span><code>px<span class="w"> </span>foo-bar
 px<span class="w"> </span>fooBar
 px<span class="w"> </span>fooB
 px<span class="w"> </span>fBar
 px<span class="w"> </span>fB
 px<span class="w"> </span>f
-</code></pre></div></p>
+</code></pre></div>
 <div class="admonition caution">
 <p class="admonition-title">An alias can shadow other commands</p>
 <p>Abbreviations come with the cost that an alias will shadow other non-alias commands when the alias' name
 starts with that command. For example:
 <div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx]</span>
-<span class="n">black</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;black&quot;</span>
+<span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;black&quot;</span><span class="p">]</span>
 <span class="k">[tool.pyprojectx.aliases]</span>
 <span class="n">black-adder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;echo &#39;Field Marshal Haig is about to make yet another gargantuan effort to move his drinks cabinet six inches closer to Berlin.&#39;&quot;</span>
-<span class="n">black</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;@black: black&quot;</span>
+<span class="n">black</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;black&quot;</span>
 </code></pre></div>
 Here it would not be possible to use the <code>black</code> formatter without explicitly exposing it with the second alias.</p>
 </div>

@@ -298,7 +298,7 @@
         
   
   <span class="md-ellipsis">
-    Manage Tools as Dev dependencies
+    Manage tools as dev dependencies
   </span>
   
 
@@ -320,6 +320,48 @@
   
   <span class="md-ellipsis">
     Shortcut common commands with aliases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config/scripts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Run Python scripts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config/defaults/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configurable defaults
   </span>
   
 
@@ -429,6 +471,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#create-a-new-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create a new project
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#build-scripts" class="md-nav__link">
     <span class="md-ellipsis">
       Build scripts
@@ -490,6 +541,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#create-a-new-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create a new project
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#build-scripts" class="md-nav__link">
     <span class="md-ellipsis">
       Build scripts
@@ -535,6 +595,36 @@
 
 
 <h1 id="recipes">Recipes<a class="headerlink" href="#recipes" title="Permanent link">#</a></h1>
+<h2 id="create-a-new-project">Create a new project<a class="headerlink" href="#create-a-new-project" title="Permanent link">#</a></h2>
+<p>Install common tools:
+- pdm or poetry: dependency management
+- ruff: linter/formatter
+- pre-commit: git hooks for formatting and linting
+- px-utils: cross-platform file operations</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Linux/Mac</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="c1"># initialize a PDM project</span>
+./pw<span class="w"> </span>--add<span class="w"> </span>pdm,ruff,pre-commit,px-utils
+./pw<span class="w"> </span>pdm<span class="w"> </span>init
+<span class="c1"># initialize a poetry project</span>
+./pw<span class="w"> </span>--add<span class="w"> </span>poetry,ruff,pre-commit,px-utils
+./pw<span class="w"> </span>poetry<span class="w"> </span>init
+</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Windows</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="c"># initialize a PDM project</span>
+<span class="n">pw</span> <span class="p">-</span><span class="n">-add</span> <span class="n">pdm</span><span class="p">,</span><span class="n">ruff</span><span class="p">,</span><span class="n">pre-commit</span><span class="p">,</span><span class="n">px-utils</span>
+<span class="n">pw</span> <span class="n">pdm</span> <span class="n">init</span>
+<span class="c"># initialize a poetry project</span>
+<span class="n">pw</span> <span class="p">-</span><span class="n">-add</span> <span class="n">poetry</span><span class="p">,</span><span class="n">ruff</span><span class="p">,</span><span class="n">pre-commit</span><span class="p">,</span><span class="n">px-utils</span>
+<span class="n">pw</span> <span class="n">poetry</span> <span class="n">init</span>
+</code></pre></div>
 <h2 id="build-scripts">Build scripts<a class="headerlink" href="#build-scripts" title="Permanent link">#</a></h2>
 <p>Script your development and build flow with aliases:</p>
 <ul>
@@ -550,45 +640,78 @@
 <li>packaging and publishing</li>
 </ul>
 <p>With this combination, you can most likely skip makefiles altogether.</p>
-<p>Example:
+<p>Example:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">PDM</label><label for="__tabbed_3_2">Poetry</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx]</span>
-<span class="c1"># the first time that a poetry command is invoked, we make sure that pre-commit hooks are installed, so we can&#39;t forget it</span>
-<span class="n">poetry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">requirements</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;poetry==1.1.13&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">post-install</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;pw@pre-commit install&quot;</span><span class="w"> </span><span class="p">}</span>
-<span class="n">black</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;black==22.1.0&quot;</span>
-<span class="n">ruff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ruff==0.0.291&quot;</span>
-<span class="n">pre-commit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pre-commit&quot;</span>
-<span class="n">mkdocs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;mkdocs ~=1.2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mkdocs-material ~=8.2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mkdocstrings[python] ~=0.18&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;markdown-include ~=0.6&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
-
+<span class="k">[tool.pyprojectx.main]</span>
+<span class="n">requirements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;pdm&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ruff&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pre-commit&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;px-utils&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mkdocs&quot;</span><span class="w"> </span><span class="p">]</span>
+<span class="c1"># the first time that a pdm command is invoked, we make sure that pre-commit hooks are installed, so we can&#39;t forget it</span>
+<span class="n">post-install</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pre-commit install&quot;</span>
 <span class="k">[tool.pyprojectx.aliases]</span>
-<span class="n">install</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;poetry install&quot;</span>
-<span class="n">run</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;poetry run pyprojectx -t pyproject.toml &quot;</span>
-<span class="n">outdated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;poetry show --outdated&quot;</span>
-<span class="n">clean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;rm -r .venv .pytest_cache dist&quot;</span>
-<span class="n">black</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;black src tests&quot;</span>
-<span class="n">ruff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ruff src tests --fix&quot;</span>
-<span class="n">unit-test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;poetry run pytest tests/unit&quot;</span>
-<span class="n">integration-test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;poetry run pytest tests/integration&quot;</span>
-<span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pw@unit-test &amp;&amp; pw@integration-test&quot;</span>
-<span class="n">check-ruff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ruff src tests&quot;</span>
-<span class="n">check-black</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;black src tests --check&quot;</span>
+<span class="c1"># create the virtual environment and install all dependencies</span>
+<span class="n">install</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pdm install&quot;</span>
+<span class="c1"># run a command in the project&#39;s virtual environment</span>
+<span class="n">run</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pdm run&quot;</span>
+<span class="c1"># show outdated dependencies</span>
+<span class="n">outdated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pdm update --outdated&quot;</span>
+<span class="n">clean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pxrm .venv .pytest_cache dist .pdm-build .ruff_cache&quot;</span>
+<span class="n">full-clean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;@clean&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pxrm .pyprojectx&quot;</span><span class="p">]</span>
+<span class="c1"># format code and sort imports</span>
+<span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ruff format&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ruff check --select I --fix&quot;</span><span class="p">]</span>
+<span class="n">lint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ruff check&quot;</span><span class="p">]</span>
+<span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pdm run pytest&quot;</span>
 <span class="c1"># run check before pushing to git and your build will never break</span>
-<span class="n">check</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pw@check-black &amp;&amp; pw@check-ruff &amp;&amp; pw@test&quot;</span>
+<span class="n">check</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;@lint&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;@test&quot;</span><span class="p">]</span>
 <span class="c1"># run the same build command on your laptop or CI/CD server</span>
-<span class="n">build</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pw@install &amp;&amp; pw@check &amp;&amp; pw@poetry build&quot;</span>
-
-<span class="c1"># extract complexity from your CI/CD flows to test/run locally</span>
-<span class="n">publish</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;poetry publish --username __token__&quot;</span>
-<span class="n">prep-release</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
-<span class="s2"># create distributions, tag versions, etc.</span>
-<span class="s2">&quot;&quot;&quot;</span>
-
-<span class="c1"># generate documentation</span>
-<span class="n">generate-usage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pw@ --help &gt; docs/docs/usage.txt&quot;</span>
-<span class="n">serve-docs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;@mkdocs: cd docs &amp;&amp; mkdocs serve&quot;</span>
-<span class="n">deploy-docs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;@mkdocs: cd docs &amp;&amp; mkdocs gh-deploy&quot;</span>
-</code></pre></div></p>
+<span class="n">build</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;@install&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;@check&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pdm build&quot;</span><span class="w"> </span><span class="p">]</span>
+<span class="c1"># extract complexity from your CI/CD flows to test/run them locally</span>
+<span class="c1"># use comprehensible python scripts (bin/prep-release) instead of complex shell scripts</span>
+<span class="n">release</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;prep-release&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pdm publish --username __token__&quot;</span><span class="p">]</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx]</span>
+<span class="k">[tool.pyprojectx.main]</span>
+<span class="n">requirements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;poetry&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ruff&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pre-commit&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;px-utils&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mkdocs&quot;</span><span class="w"> </span><span class="p">]</span>
+<span class="c1"># the first time that a poetry command is invoked, we make sure that pre-commit hooks are installed, so we can&#39;t forget it</span>
+<span class="n">post-install</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pre-commit install&quot;</span>
+<span class="k">[tool.pyprojectx.aliases]</span>
+<span class="c1"># create the virtual environment and install all dependencies</span>
+<span class="n">install</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;poetry install&quot;</span>
+<span class="c1"># run a command in the project&#39;s virtual environment</span>
+<span class="n">run</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;poetry run&quot;</span>
+<span class="c1"># show outdated dependencies</span>
+<span class="n">outdated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;poetry show --outdated --top-level&quot;</span>
+<span class="n">clean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pxrm .venv .pytest_cache dist .ruff_cache&quot;</span>
+<span class="n">full-clean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;@clean&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pxrm .pyprojectx&quot;</span><span class="p">]</span>
+<span class="c1"># format code and sort imports</span>
+<span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ruff format&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ruff check --select I --fix&quot;</span><span class="p">]</span>
+<span class="n">lint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ruff check&quot;</span><span class="p">]</span>
+<span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;poetry run pytest&quot;</span>
+<span class="c1"># run check before pushing to git and your build will never break</span>
+<span class="n">check</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;@lint&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;@test&quot;</span><span class="p">]</span>
+<span class="c1"># run the same build command on your laptop or CI/CD server</span>
+<span class="n">build</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;@install&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;@check&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;poetry build&quot;</span><span class="w"> </span><span class="p">]</span>
+<span class="c1"># extract complexity from your CI/CD flows to test/run them locally</span>
+<span class="c1"># use comprehensible python scripts (bin/prep-release) instead of complex shell scripts</span>
+<span class="n">release</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;prep-release&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;poetry publish --username __token__&quot;</span><span class="p">]</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <p>See Pyprojectx own <a href="https://github.com/pyprojectx/pyprojectx/blob/main/pyproject.toml">pyproject.toml</a> for a full example
 with PDM, or <a href="https://github.com/pyprojectx/px-demo">px-demo</a> for another example project with PDM.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip: Keep the poetry virtual environment inside your project directory</p>
+<p>Add <code>poetry.toml</code> to your project:
+<div class="highlight"><pre><span></span><code><span class="k">[virtualenvs]</span>
+<span class="n">in-project</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</code></pre></div>
+This makes Poetry create a <code>.venv</code> in your project directory instead of somewhere in your home directory.
+It makes it easier to locate files and to keep your system clean when removing the project.</p>
+</div>
 <h2 id="github-actions">Github actions<a class="headerlink" href="#github-actions" title="Permanent link">#</a></h2>
 <p>By using the <code>pw</code> wrapper script, you can simplify your github actions:</p>
 <ul>
@@ -597,7 +720,7 @@ with PDM, or <a href="https://github.com/pyprojectx/px-demo">px-demo</a> for ano
 </ul>
 <p>Some tips:</p>
 <ul>
-<li>Use the same scripts on Linux and Windows by replacing <code>./pw</code> (resp. <code>.\pw</code>) with <code>python pw</code></li>
+<li>Use the same scripts on Linux and Windows by replacing <code>./pw</code> (resp. <code>pw</code>) with <code>python pw</code></li>
 <li>Speed up builds by caching <code>.pyprojectx</code></li>
 </ul>
 <p>Example:
@@ -625,15 +748,20 @@ and <a href="https://github.com/pyprojectx/pyprojectx/blob/main/.github/workflow
 <h2 id="experiment-with-your-project-in-a-jupyter-notebook">Experiment with your project in a Jupyter notebook<a class="headerlink" href="#experiment-with-your-project-in-a-jupyter-notebook" title="Permanent link">#</a></h2>
 <p>You can launch a notebook that has access to your project packages without the need to install anything upfront.</p>
 <p><div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx]</span>
-<span class="c1"># install the current directory together with jupyter</span>
-<span class="n">jupyter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;jupyter&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;.&quot;</span><span class="p">]</span>
+<span class="c1"># install the current project in editable mode, together with jupyter</span>
+<span class="n">jupyter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;jupyterlab&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-e .&quot;</span><span class="p">]</span>
 
 <span class="k">[tool.pyprojectx.aliases]</span>
-<span class="c1"># the notebook-dir is optional</span>
 <span class="c1"># -y is there to automatically answer &#39;yes&#39; after quitting with ctrl+c</span>
-<span class="n">notebook</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;jupyter notebook --notebook-dir docs -y&quot;</span>
+<span class="n">notebook</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;jupyter lab -y&quot;</span>
 </code></pre></div>
 Just run <code>px notebook</code> or even <code>px n</code></p>
+<div class="admonition note">
+<p class="admonition-title">Editable installs are not locked</p>
+<p>When a tool context contains an editable install, it won't be locked when running <code>./pw --lock</code>.
+Therefore, it is recommended to add editable install to a separate tool context and lock the main
+context fro reproducible builds.</p>
+</div>
 
 
 

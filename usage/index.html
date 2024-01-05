@@ -9,7 +9,7 @@
       
       
       
-        <link rel="prev" href="../config/aliases/">
+        <link rel="prev" href="../config/defaults/">
       
       
         <link rel="next" href="../dev-dependencies/">
@@ -300,7 +300,7 @@
         
   
   <span class="md-ellipsis">
-    Manage Tools as Dev dependencies
+    Manage tools as dev dependencies
   </span>
   
 
@@ -322,6 +322,48 @@
   
   <span class="md-ellipsis">
     Shortcut common commands with aliases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config/scripts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Run Python scripts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config/defaults/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configurable defaults
   </span>
   
 
@@ -396,48 +438,6 @@
       CLI
     </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#initialize-a-new-or-existing-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      Initialize a new or existing project
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Initialize a new or existing project">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#plain-python-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      Plain Python project
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pdm-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      PDM project
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#poetry-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      Poetry project
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -543,48 +543,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#initialize-a-new-or-existing-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      Initialize a new or existing project
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Initialize a new or existing project">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#plain-python-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      Plain Python project
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pdm-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      PDM project
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#poetry-project" class="md-nav__link">
-    <span class="md-ellipsis">
-      Poetry project
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#install-the-global-px-script" class="md-nav__link">
     <span class="md-ellipsis">
       Install the global px script
@@ -623,9 +581,8 @@
 <h1 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">#</a></h1>
 <h2 id="cli">CLI<a class="headerlink" href="#cli" title="Permanent link">#</a></h2>
 <div class="highlight"><pre><span></span><code>usage: pw [-h] [--version] [--toml TOML] [--install-dir INSTALL_DIR]
-          [--force-install] [--install-context INSTALL_CONTEXT] [--verbose]
-          [--quiet] [--info] [--add package] [--lock] [--install-px]
-          [--upgrade]
+          [--force-install] [--install-context context] [--verbose] [--quiet]
+          [--info] [--add package] [--lock] [--install-px] [--upgrade]
           ...
 
 Execute commands or aliases defined in the [tool.pyprojectx] section of
@@ -647,8 +604,9 @@ options:
                         same directory as the invoked pw script
   --force-install, -f   Force clean installation of the virtual environment
                         used to run cmd, if any
-  --install-context INSTALL_CONTEXT
-                        Install a tool context without running a command.
+  --install-context context
+                        Install a tool context without actually running any
+                        command.
   --verbose, -v         Give more output. This option is additive and can be
                         used up to 2 times.
   --quiet, -q           Suppress output
@@ -664,109 +622,35 @@ options:
   --install-px          Install the px and pxg scripts in your home directory.
   --upgrade             Download the latest pyprojectx wrapper scripts.
 </code></pre></div>
-<h2 id="initialize-a-new-or-existing-project">Initialize a new or existing project<a class="headerlink" href="#initialize-a-new-or-existing-project" title="Permanent link">#</a></h2>
-<p>Pyprojectx can create or update a <code>pyproject.toml</code> file for either a plain, a <a href="https://pdm.fming.dev/">PDM</a>
-or a <a href="https://python-poetry.org/">Poetry</a> project.</p>
-<p>Cd into your existing project directory (or create a new empty directory), download the wrapper scripts,
-and run the init command.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip: Add the wrapper scripts to version control</p>
-<p>When using Git:
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>pw<span class="w"> </span>pw.bat
-git<span class="w"> </span>update-index<span class="w"> </span>--chmod<span class="o">=</span>+x<span class="w"> </span>pw
-<span class="nb">echo</span><span class="w"> </span>.pyprojectx/<span class="w"> </span>&gt;&gt;<span class="w"> </span>.gitignore
-</code></pre></div></p>
-</div>
-<h3 id="plain-python-project">Plain Python project<a class="headerlink" href="#plain-python-project" title="Permanent link">#</a></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Linux/Mac</label><label for="__tabbed_1_2">Windows</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-LO<span class="w"> </span>https://github.com/pyprojectx/pyprojectx/releases/latest/download/wrappers.zip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>unzip<span class="w"> </span>wrappers.zip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>wrappers.zip
-./pw<span class="w"> </span>--init<span class="w"> </span>project
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nb">Invoke-WebRequest</span> <span class="n">https</span><span class="p">://</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">pyprojectx</span><span class="p">/</span><span class="n">pyprojectx</span><span class="p">/</span><span class="n">releases</span><span class="p">/</span><span class="n">latest</span><span class="p">/</span><span class="n">download</span><span class="p">/</span><span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span> <span class="n">-OutFile</span> <span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span><span class="p">;</span> <span class="nb">Expand-Archive</span> <span class="n">-Path</span> <span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span> <span class="n">-DestinationPath</span> <span class="p">.;</span> <span class="nb">Remove-Item</span> <span class="n">-Path</span> <span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span>
-<span class="p">.\</span><span class="n">pw</span> <span class="p">-</span><span class="n">-init</span> <span class="n">project</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<p>Now you can use the <code>pw</code> or <a href="/usage/#install-the-global-px-script"><code>px</code></a> script to show available tools and commands: <code>./pw -i</code>.</p>
-<h3 id="pdm-project">PDM project<a class="headerlink" href="#pdm-project" title="Permanent link">#</a></h3>
-<p>Start the interactive PDM initializer:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Linux/Mac</label><label for="__tabbed_2_2">Windows</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-LO<span class="w"> </span>https://github.com/pyprojectx/pyprojectx/releases/latest/download/wrappers.zip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>unzip<span class="w"> </span>wrappers.zip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>wrappers.zip
-./pw<span class="w"> </span>--init<span class="w"> </span>pdm
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nb">Invoke-WebRequest</span> <span class="n">https</span><span class="p">://</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">pyprojectx</span><span class="p">/</span><span class="n">pyprojectx</span><span class="p">/</span><span class="n">releases</span><span class="p">/</span><span class="n">latest</span><span class="p">/</span><span class="n">download</span><span class="p">/</span><span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span> <span class="n">-OutFile</span> <span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span><span class="p">;</span> <span class="nb">Expand-Archive</span> <span class="n">-Path</span> <span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span> <span class="n">-DestinationPath</span> <span class="p">.;</span> <span class="nb">Remove-Item</span> <span class="n">-Path</span> <span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span>
-<span class="p">.\</span><span class="n">pw</span> <span class="p">-</span><span class="n">-init</span> <span class="n">pdm</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<p>Any extra arguments are passed to PDM's init command, f.e. <code>./pw --init pdm --non-interactive</code>.</p>
-<p>Now you can run any PDM command with the <code>pw</code> or <a href="/usage/#install-the-global-px-script"><code>px</code></a> script, f.e. <code>./pw pdm install</code></p>
-<h3 id="poetry-project">Poetry project<a class="headerlink" href="#poetry-project" title="Permanent link">#</a></h3>
-<p>Start the interactive poetry initializer:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Linux/Mac</label><label for="__tabbed_3_2">Windows</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-LO<span class="w"> </span>https://github.com/pyprojectx/pyprojectx/releases/latest/download/wrappers.zip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>unzip<span class="w"> </span>wrappers.zip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>wrappers.zip
-./pw<span class="w"> </span>--init<span class="w"> </span>poetry
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nb">Invoke-WebRequest</span> <span class="n">https</span><span class="p">://</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">pyprojectx</span><span class="p">/</span><span class="n">pyprojectx</span><span class="p">/</span><span class="n">releases</span><span class="p">/</span><span class="n">latest</span><span class="p">/</span><span class="n">download</span><span class="p">/</span><span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span> <span class="n">-OutFile</span> <span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span><span class="p">;</span> <span class="nb">Expand-Archive</span> <span class="n">-Path</span> <span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span> <span class="n">-DestinationPath</span> <span class="p">.;</span> <span class="nb">Remove-Item</span> <span class="n">-Path</span> <span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span>
-<span class="p">.\</span><span class="n">pw</span> <span class="p">-</span><span class="n">-init</span> <span class="n">poetry</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<p>Any extra arguments are passed to Poetry's init command, f.e. <code>./pw --init poetry --no-interaction</code>.</p>
-<p>Now you can run any Poetry command with the <code>pw</code> or <a href="/usage/#install-the-global-px-script"><code>px</code></a> script, f.e. <code>./pw poetry install</code></p>
-<div class="admonition info">
-<p class="admonition-title">In-project virtual environment</p>
-<p><code>--init poetry</code> will also copy a <code>poetry.toml</code> to your project directory:
-<div class="highlight"><pre><span></span><code><span class="k">[virtualenvs]</span>
-<span class="n">in-project</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
-</code></pre></div>
-This makes Poetry create a <code>.venv</code> in your project directory instead of somewhere in your home directory.
-It makes it easier to locate files and to keep your system clean when removing the project.</p>
-</div>
 <h2 id="install-the-global-px-script">Install the global <code>px</code> script<a class="headerlink" href="#install-the-global-px-script" title="Permanent link">#</a></h2>
 <p>Pyprojectx provides a small <code>px</code> script that delegates everything to the <code>pw</code> wrapper script.
 The <code>pw</code> script is searched for in the current working directory and its parents.</p>
 <p>When added to your <em>PATH</em>, you can replace <code>./pw</code> with the shorter <code>px</code>.
 This also works from subdirectories: <code>../../pw</code> can also be replaced with <code>px</code></p>
 <p>To install:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Linux/Mac</label><label for="__tabbed_4_2">Windows</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Linux/Mac</label><label for="__tabbed_1_2">Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>./pw<span class="w"> </span>--init<span class="w"> </span>global
+<div class="highlight"><pre><span></span><code>./pw<span class="w"> </span>--install-px
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">pw</span> <span class="p">-</span><span class="n">-init</span> <span class="n">global</span>
+<div class="highlight"><pre><span></span><code><span class="n">pw</span> <span class="p">-</span><span class="n">-install-px</span>
 </code></pre></div>
 </div>
 </div>
 </div>
 <h2 id="global-tools">Global tools<a class="headerlink" href="#global-tools" title="Permanent link">#</a></h2>
-<p>Besides the <code>px</code> script, <code>pw --init global</code> also copies other files:</p>
-<ul>
-<li><code>pxg</code> script in <code>~/.pyprojectx</code></li>
-<li><code>pw</code> script and example <code>pyproject.toml</code> in <code>~/.pyprojectx/global</code></li>
-</ul>
-<p><code>pxg</code> can be used as a lightweight <a href="https://pypa.github.io/pipx/">pipx</a> to install tools globally.</p>
-<p>Example usage: <code>pyproject.toml</code> contains by default <a href="https://httpie.io/">httpie</a> so you can make http requests:
-<div class="highlight"><pre><span></span><code>pxg<span class="w"> </span>http<span class="w"> </span>POST<span class="w"> </span>pie.dev/post<span class="w"> </span><span class="nv">hello</span><span class="o">=</span>world
+<p>Besides the <code>px</code> script, <code>pw --install-px</code> also copies adds the <code>pxg</code>.</p>
+<p><code>pxg</code> can be used as a lightweight <a href="https://pypa.github.io/pipx/">pipx</a> to install/run tools globally.</p>
+<p>Example: make http requests with <a href="https://httpie.io/">httpie</a>:
+<div class="highlight"><pre><span></span><code>pxg<span class="w"> </span>--add<span class="w"> </span>httpie
+pxg<span class="w"> </span>http<span class="w"> </span>POST<span class="w"> </span>pie.dev/post<span class="w"> </span><span class="nv">hello</span><span class="o">=</span>world
 </code></pre></div></p>
-<p>Uninstalling all global tools is just a matter of <code>rm -rf ~/.pyprojectx/global/.pyprojectx</code></p>
+<p>The global setup can be configured in <em>~/.pyprojectx/global/pyproject.toml</em>.</p>
+<p>Uninstalling all global tools is just a matter of removing the global directory:
+<div class="highlight"><pre><span></span><code>rm<span class="w"> </span>-rf<span class="w"> </span>~/.pyprojectx/global/.pyprojectx
+</code></pre></div></p>
 
 
 

@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../..">
+        <link rel="prev" href="../scripts/">
       
       
-        <link rel="next" href="../aliases/">
+        <link rel="next" href="../../usage/">
       
       
       <link rel="icon" href="../../assets/px.svg">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Manage tools as dev dependencies - Pyprojectx</title>
+        <title>Configurable defaults - Pyprojectx</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#manage-tools-as-dev-dependencies" class="md-skip">
+        <a href="#configurable-defaults" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Manage tools as dev dependencies
+              Configurable defaults
             
           </span>
         </div>
@@ -295,30 +295,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Manage tools as dev dependencies
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../tools/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -327,95 +307,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#tool-contexts" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tool contexts
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tool-context-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tool context configuration
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#post-install-scripts" class="md-nav__link">
-    <span class="md-ellipsis">
-      Post-install scripts
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#using-an-alternative-package-index" class="md-nav__link">
-    <span class="md-ellipsis">
-      Using an alternative package index
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#locking-requirements" class="md-nav__link">
-    <span class="md-ellipsis">
-      Locking requirements
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Locking requirements">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#creating-a-pwlock-file" class="md-nav__link">
-    <span class="md-ellipsis">
-      Creating a pw.lock file
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pinning-tool-versions-in-pyprojecttoml" class="md-nav__link">
-    <span class="md-ellipsis">
-      Pinning tool versions in pyproject.toml
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -467,10 +358,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../defaults/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Configurable defaults
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -479,6 +390,53 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#current-working-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Current working directory
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment variables
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shell
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -578,71 +536,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#tool-contexts" class="md-nav__link">
+  <a href="#current-working-directory" class="md-nav__link">
     <span class="md-ellipsis">
-      Tool contexts
+      Current working directory
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#tool-context-configuration" class="md-nav__link">
+  <a href="#environment-variables" class="md-nav__link">
     <span class="md-ellipsis">
-      Tool context configuration
+      Environment variables
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#post-install-scripts" class="md-nav__link">
+  <a href="#shell" class="md-nav__link">
     <span class="md-ellipsis">
-      Post-install scripts
+      Shell
     </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#using-an-alternative-package-index" class="md-nav__link">
-    <span class="md-ellipsis">
-      Using an alternative package index
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#locking-requirements" class="md-nav__link">
-    <span class="md-ellipsis">
-      Locking requirements
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Locking requirements">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#creating-a-pwlock-file" class="md-nav__link">
-    <span class="md-ellipsis">
-      Creating a pw.lock file
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pinning-tool-versions-in-pyprojecttoml" class="md-nav__link">
-    <span class="md-ellipsis">
-      Pinning tool versions in pyproject.toml
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -664,119 +580,40 @@
   
 
 
-<h1 id="manage-tools-as-dev-dependencies">Manage tools as dev dependencies<a class="headerlink" href="#manage-tools-as-dev-dependencies" title="Permanent link">#</a></h1>
-<p>Pyprojectx can manage all the Python tools and utilities that you use for building, testing...</p>
-<p>Adding tools to the <code>[tool.pyprojectx]</code> section in <code>pyproject.toml</code> makes them available inside your project.</p>
-<div class="admonition note">
-<p class="admonition-title">Tool contexts introduced in Pyprojectx 2.0.0</p>
-<p>Prior to Pyprojectx 2.0.0, tools were always installed in a separate virtual environment.
-As of 2.0.0, tools are by default installed in the virtual environment of the <em>main</em> tool context.</p>
-</div>
-<div class="admonition info">
-<p class="admonition-title"><code>px</code> or <code>pw</code>?</p>
-<p>This section assumes that you installed the <a href="/usage/#install-the-global-px-script">px utility script</a>.
-Otherwise, you need to replace <code>px</code> with <code>./pw</code> (Linux, Mac) or <code>pw</code> (Windows PowerShell).</p>
-</div>
-<h2 id="tool-contexts">Tool contexts<a class="headerlink" href="#tool-contexts" title="Permanent link">#</a></h2>
-<p>Pyprojectx creates an isolated virtual environment for each tool context (set of tools).</p>
-<p>Inside the <code>[tool.pyprojectx]</code> section of <code>pyproject.toml</code> you specify what needs to be installed.</p>
-<div class="highlight"><span class="filename">pyproject.toml</span><pre><span></span><code><span class="k">[tool.pyprojectx]</span>
-<span class="c1"># require a specific poetry version, use the latest version of black</span>
-<span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;poetry==1.1.11&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;black&quot;</span><span class="p">]</span>
-</code></pre></div>
-<p>Above configuration makes the <code>black</code> and <code>poetry</code> commands available inside your project.</p>
-<p>You only need to prefix them with the<code>px</code> or <code>pw</code> wrapper script:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Any OS with <code>px</code></label><label for="__tabbed_1_2">Linux/Mac</label><label for="__tabbed_1_3">Windows</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>px<span class="w"> </span>poetry<span class="w"> </span>--help
-px<span class="w"> </span>black<span class="w"> </span>my_package<span class="w"> </span>--diff
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>./pw<span class="w"> </span>poetry<span class="w"> </span>--help
-./pw<span class="w"> </span>black<span class="w"> </span>my_package<span class="w"> </span>--diff
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">pw</span> <span class="n">poetry</span> <span class="p">-</span><span class="n">-help</span>
-<span class="n">pw</span> <span class="n">black</span> <span class="n">my_package</span> <span class="p">-</span><span class="n">-diff</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Naming your tool context</p>
-<p>When running a command that has the same name as a tool context, the command will be executed by default inside the virtual environment of that tool context.
-Otherwise, the command will be executed in the virtual environment of the <em>main</em> tool context.</p>
-</div>
-<h2 id="tool-context-configuration">Tool context configuration<a class="headerlink" href="#tool-context-configuration" title="Permanent link">#</a></h2>
-<p>In its simplest form, a tool context is a multiline string or array of strings that adheres to pip's <a href="https://pip.pypa.io/en/stable/reference/requirements-file-format/#requirements-file-format">Requirements File Format</a></p>
-<p>Example:</p>
-<div class="highlight"><span class="filename">pyproject.toml</span><pre><span></span><code><span class="k">[tool.pyprojectx]</span>
-<span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;pdm&quot;</span><span class="p">,</span><span class="s2">&quot;ruff&quot;</span><span class="p">,</span><span class="s2">&quot;pre-commit&quot;</span><span class="p">,</span><span class="s2">&quot;px-utils&quot;</span><span class="p">]</span>
-<span class="n">http</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;httpie ~= 3.0&quot;</span>
-</code></pre></div>
-<p>With above configuration, you can run following commands:</p>
-<div class="highlight"><pre><span></span><code>px<span class="w"> </span>pdm<span class="w"> </span>--version
-<span class="c1"># PDM, version 2.11.2</span>
-px<span class="w"> </span>http<span class="w"> </span>www.google.com
-<span class="c1"># HTTP/1.1 200 OK ...</span>
-</code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">Tip: Specify exact versions for tools that are critical in your build flow</p>
-<p>This makes sure that your build won't break when new versions of a tool are released.
-It also ensures that you can always rebuild older versions of your project that rely on older versions of tools
-(f.e. when building a patch release).</p>
-</div>
-<h2 id="post-install-scripts">Post-install scripts<a class="headerlink" href="#post-install-scripts" title="Permanent link">#</a></h2>
-<p>In some situations it can be useful to perform additional actions after a tool has been installed.
-This is achieved by configuring both requirements and post-install scripts for a tool</p>
+<h1 id="configurable-defaults">Configurable defaults<a class="headerlink" href="#configurable-defaults" title="Permanent link">#</a></h1>
+<h2 id="current-working-directory">Current working directory<a class="headerlink" href="#current-working-directory" title="Permanent link">#</a></h2>
+<p>You can change the default working directory for all commands by setting the <code>cwd</code> option.</p>
+<p>Sensible values are <code>.</code> (the current directory) or <code>@PROJECT_DIR</code> (the directory containing <em>pyproject.toml</em>).</p>
 <div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx]</span>
-<span class="k">[tool.pyprojectx.main]</span>
-<span class="n">requirements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;pdm&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ruff&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pre-commit&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;px-utils&quot;</span><span class="p">]</span>
-<span class="n">post-install</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pre-commit install&quot;</span>
+<span class="n">cwd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;.&quot;</span>
 </code></pre></div>
-<p>When creating your project's virtual environment with <code>px pdm install</code> for the first time in the example above,
-pre-commit is also initialised. This makes sure that pre-commit hooks are always run when committing code.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip: Use toml subsections for better readability</p>
-<p>The example above uses a toml subsection instead of an inline table:
-<div class="highlight"><pre><span></span><code><span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">requirements</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="err">...], post-install=</span><span class="s2">&quot;...&quot;</span><span class="err">}`</span>
+<p>Aliases can override the global cwd.</p>
+<h2 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">#</a></h2>
+<p>You can set environment variables that will be added to the system environment when running a command:</p>
+<div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx]</span>
+<span class="n">env</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">POETRY_VIRTUALENVS_PATH</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;/data/poetry&quot;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p>Aliases can provide additional environment variables and/or override the global ones.</p>
+<h2 id="shell">Shell<a class="headerlink" href="#shell" title="Permanent link">#</a></h2>
+<p>You can change the os shell used to run commands. The shell can be defined globally, os specific or alias specific.</p>
+<div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx]</span>
+<span class="n">shell</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;bash</span>
+<span class="s2">[tool.pyprojectx.os.win]</span>
+<span class="s2">shell = &quot;</span><span class="n">pwsh</span><span class="p">.</span><span class="n">exe</span><span class="s2">&quot;</span>
+</code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Specifying a shell changes variable substitution</p>
+<p>Commands are converted into a single string and passed to the shell with the <code>-c</code> option,
+example: <code>bash -c "echo $PATH"</code>. This changes the variable substitution that is done by your os
+and can lead to unexpected results.</p>
+</div>
+<p>When you set a shell for os specific file operations, consider using <a href="https://github.com/pyprojectx/px-utils">px-utils</a> instead.
+<div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx.alias]</span>
+<span class="n">prepare</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pxmkdirs build generated&quot;</span>
+<span class="n">copy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pxcp src/**/*.py build/python&quot;</span>
+<span class="n">move</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pxmv data/**/*.json build/data&quot;</span>
+<span class="n">clean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pxrm build generated&quot;</span>
 </code></pre></div></p>
-</div>
-<h2 id="using-an-alternative-package-index">Using an alternative package index<a class="headerlink" href="#using-an-alternative-package-index" title="Permanent link">#</a></h2>
-<p>You can use pip's <code>--index-url</code> or <code>--extra-index-url</code> to install packages from alternative (private) package indexes:</p>
-<div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx]</span>
-<span class="n">private-tool</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;--extra-index-url https://artifactory.acme.com/artifactory/api/pypi/python-virtual/simple&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="s2">&quot;some-private-package&quot;</span>
-<span class="p">]</span>
-</code></pre></div>
-<h2 id="locking-requirements">Locking requirements<a class="headerlink" href="#locking-requirements" title="Permanent link">#</a></h2>
-<p>To achieve reproducible builds, you can lock the versions of all tools that you use in your project by:</p>
-<ul>
-<li>creating a <em>pw.lock</em> file</li>
-<li>pinning tool versions in <em>pyproject.toml</em></li>
-</ul>
-<h3 id="creating-a-pwlock-file">Creating a <em>pw.lock</em> file<a class="headerlink" href="#creating-a-pwlock-file" title="Permanent link">#</a></h3>
-<p>When you run <code>px --lock</code>, a <em>pw.lock</em> file is created in the root directory of your project.
-This file should be committed to version control.</p>
-<p>This is the recommended way to lock tool versions to guarantee reproducible builds (see <a href="/dev-dependencies/#the-unreliable-pip-install">why</a>)</p>
-<p>The lock file is automatically updated when the tool context requirements in <em>pyproject.toml</em> change
-or when you run <code>px --lock</code> again.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip: don't specify tool versions in <em>pyproject.toml</em> when using a <em>pw.lock</em> file</p>
-<p>When there is no version specified for a tool, the latest version will be installed and locked.
-Updating all tools to the latest version is then as simple as running <code>px --lock</code> again.
-In case of conflicts or issues with a new version, you can always revert to the previous version of the lock file.</p>
-</div>
-<h3 id="pinning-tool-versions-in-pyprojecttoml">Pinning tool versions in <em>pyproject.toml</em><a class="headerlink" href="#pinning-tool-versions-in-pyprojecttoml" title="Permanent link">#</a></h3>
-<p>You can also pin tool versions in <em>pyproject.toml</em>:</p>
-<p><div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx]</span>
-<span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;pdm==2.11.2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ruff==0.1.11&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pre-commit==3.6.0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;px-utils==1.0.1&quot;</span><span class="p">]</span>
-</code></pre></div>
-Be aware that even with a fixed version, <a href="/dev-dependencies/#the-unreliable-pip-install">tools can break at future installs</a>!</p>
 
 
 

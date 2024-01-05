@@ -356,7 +356,7 @@
         
   
   <span class="md-ellipsis">
-    Manage Tools as Dev dependencies
+    Manage tools as dev dependencies
   </span>
   
 
@@ -378,6 +378,48 @@
   
   <span class="md-ellipsis">
     Shortcut common commands with aliases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="config/scripts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Run Python scripts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="config/defaults/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configurable defaults
   </span>
   
 
@@ -543,14 +585,14 @@ not even Pyprojectx itself!</p>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">://</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">pyprojectx</span><span class="p">/</span><span class="n">px-demo</span><span class="p">.</span><span class="n">git</span>
 <span class="nb">cd </span><span class="n">px-demo</span>
-<span class="p">.\</span><span class="n">pw</span> <span class="n">build</span>
+<span class="n">pw</span> <span class="n">build</span>
 </code></pre></div>
 </div>
 </div>
 </div>
 <p><img alt="Clone and Build" src="assets/build.png" /></p>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">#</a></h2>
-<p>One of the key features is that there is no need to install anything explicitly (except a Python 3.7+ interpreter).</p>
+<p>One of the key features is that there is no need to install anything explicitly (except a Python 3.8+ interpreter).</p>
 <p><code>cd</code> into your project directory and download the
 <a href="https://github.com/pyprojectx/pyprojectx/releases/latest/download/wrappers.zip">wrapper scripts</a>:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Linux/Mac</label><label for="__tabbed_2_2">Windows</label></div>
@@ -565,25 +607,25 @@ not even Pyprojectx itself!</p>
 </div>
 </div>
 </div>
-<p>With the wrapper scripts in place, you can generate example configuration (see <a href="/usage/#initialize-a-new-or-existing-project">Initialize a new or existing project</a>):</p>
+<p>With the wrapper scripts in place, you can start adding tools:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Linux/Mac</label><label for="__tabbed_3_2">Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1"># initialize a plain Python project</span>
-./pw<span class="w"> </span>--init<span class="w"> </span>project
-<span class="c1"># initialize a project with poetry&#39;s init command</span>
-./pw<span class="w"> </span>--init<span class="w"> </span>poetry
-<span class="c1"># initialize a project with pdm&#39;s init command</span>
-./pw<span class="w"> </span>--init<span class="w"> </span>pdm
+<div class="highlight"><pre><span></span><code><span class="c1"># initialize a PDM project</span>
+./pw<span class="w"> </span>--add<span class="w"> </span>pdm
+./pw<span class="w"> </span>pdm<span class="w"> </span>init
+<span class="c1"># initialize a poetry project</span>
+./pw<span class="w"> </span>--add<span class="w"> </span>poetry
+./pw<span class="w"> </span>poetry<span class="w"> </span>init
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c"># initialize a plain Python project</span>
-<span class="p">.\</span><span class="n">pw</span> <span class="p">-</span><span class="n">-init</span> <span class="n">project</span>
-<span class="c"># initialize a project with poetry&#39;s init command</span>
-<span class="p">.\</span><span class="n">pw</span> <span class="p">-</span><span class="n">-init</span> <span class="n">poetry</span>
-<span class="c"># initialize a project with pdm&#39;s init command</span>
-<span class="p">.\</span><span class="n">pw</span> <span class="p">-</span><span class="n">-init</span> <span class="n">pdm</span>
+<div class="highlight"><pre><span></span><code><span class="c"># initialize a PDM project</span>
+<span class="n">pw</span> <span class="p">-</span><span class="n">-add</span> <span class="n">pdm</span>
+<span class="n">pw</span> <span class="n">pdm</span> <span class="n">init</span>
+<span class="c"># initialize a poetry project</span>
+<span class="n">pw</span> <span class="p">-</span><span class="n">-add</span> <span class="n">poetry</span>
+<span class="n">pw</span> <span class="n">poetry</span> <span class="n">init</span>
 </code></pre></div>
 </div>
 </div>
@@ -604,11 +646,11 @@ This also works from subdirectories: <code>../../pw</code> can also be replaced 
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Linux/Mac</label><label for="__tabbed_4_2">Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>./pw<span class="w"> </span>--init<span class="w"> </span>global
+<div class="highlight"><pre><span></span><code>./pw<span class="w"> </span>--install-px
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">pw</span> <span class="p">-</span><span class="n">-init</span> <span class="n">global</span>
+<div class="highlight"><pre><span></span><code><span class="n">pw</span> <span class="p">-</span><span class="n">-install-px</span>
 </code></pre></div>
 </div>
 </div>
