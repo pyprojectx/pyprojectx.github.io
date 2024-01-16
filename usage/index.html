@@ -580,10 +580,11 @@
 
 <h1 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">#</a></h1>
 <h2 id="cli">CLI<a class="headerlink" href="#cli" title="Permanent link">#</a></h2>
-<div class="highlight"><pre><span></span><code>usage: pw [-h] [--version] [--toml TOML] [--install-dir INSTALL_DIR]
-          [--force-install] [--install-context context] [--verbose] [--quiet]
-          [--info] [--add package] [--lock] [--install-px] [--upgrade]
-          ...
+<div class="highlight"><pre><span></span><code>usage: pw.py [-h] [--version] [--toml TOML] [--install-dir INSTALL_DIR]
+             [--force-install] [--install-context tool-context] [--verbose]
+             [--quiet] [--info] [--add [context:]&lt;package&gt;,&lt;package&gt;...]
+             [--lock] [--install-px] [--upgrade]
+             ...
 
 Execute commands or aliases defined in the [tool.pyprojectx] section of
 pyproject.toml. Use the -i or --info option to see available tools and
@@ -604,7 +605,7 @@ options:
                         same directory as the invoked pw script
   --force-install, -f   Force clean installation of the virtual environment
                         used to run cmd, if any
-  --install-context context
+  --install-context tool-context
                         Install a tool context without actually running any
                         command.
   --verbose, -v         Give more output. This option is additive and can be
@@ -613,14 +614,17 @@ options:
   --info, -i            Show the configuration details of a command instead of
                         running it. If no command is specified, a list with
                         all available tools and aliases is shown.
-  --add package         Add a package to a tool context. The package needs to
-                        be specified as [context:] &lt;pip requirement
-                        specifier&gt;.If no context is specified, the package is
-                        added to the main context.
+  --add [context:]&lt;package&gt;,&lt;package&gt;...
+                        Add one or more packages to a tool context. If no
+                        context is specified, the packages are added to the
+                        main context. Packages can be specified as in &#39;pip
+                        install&#39;, except that a &#39;,&#39; can&#39;t be used in the
+                        version specification.
   --lock                Write all dependencies of all tool contexts to
                         &#39;pw.lock&#39; to guarantee reproducible outcomes.
   --install-px          Install the px and pxg scripts in your home directory.
-  --upgrade             Download the latest pyprojectx wrapper scripts.
+  --upgrade             Print instructions to download the latest pyprojectx
+                        wrapper scripts.
 </code></pre></div>
 <h2 id="install-the-global-px-script">Install the global <code>px</code> script<a class="headerlink" href="#install-the-global-px-script" title="Permanent link">#</a></h2>
 <p>Pyprojectx provides a small <code>px</code> script that delegates everything to the <code>pw</code> wrapper script.
