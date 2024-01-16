@@ -683,7 +683,8 @@ literally <code>%PATH%</code> on another OS.</p>
 <li><code>ctx</code>: the tool context in which the command is run; defaults to <code>main</code></li>
 <li><code>env</code>: additional environment variables to set</li>
 <li><code>cwd</code>: the working directory in which the command is run; defaults to <em>@PROJECT_DIR</em>, the directory containing
-    <em>pyproject.toml</em>. This default ensures that commands can be run from any subdirectory of the project.</li>
+    <em>pyproject.toml</em>. This default ensures that commands can be run from any subdirectory of the project.
+    Use <em>@PROJECT_DIR/subdir</em> to run the command in a subdirectory of the project.</li>
 <li><code>shell</code>: the shell used to run the command, overrides the default shell of the tool context</li>
 </ul>
 <div class="admonition note">
