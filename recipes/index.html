@@ -662,6 +662,8 @@ Pyprojectx can create your virtual environment and install test dependencies.</p
 <span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cmd</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;pytest&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ctx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;venv&quot;</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <p>After running any alias (f.e. <code>./pw test</code>), you can activate the virtual environment with <code>source .venv/bin/activate</code>.</p>
+<p>Use the <code>-f</code> of <code>--force-install</code> flag to recreate the virtual environment
+after changing the requirements in <code>[tool.pyprojectx.venv]</code>, f.e. run <code>./pw -f test</code>.</p>
 <h2 id="build-scripts">Build scripts<a class="headerlink" href="#build-scripts" title="Permanent link">#</a></h2>
 <p>Script your development and build flow with aliases:</p>
 <ul>
