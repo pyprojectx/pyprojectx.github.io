@@ -480,6 +480,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#simple-projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simple projects
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#build-scripts" class="md-nav__link">
     <span class="md-ellipsis">
       Build scripts
@@ -550,6 +559,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#simple-projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simple projects
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#build-scripts" class="md-nav__link">
     <span class="md-ellipsis">
       Build scripts
@@ -597,7 +615,7 @@
 <h1 id="recipes">Recipes<a class="headerlink" href="#recipes" title="Permanent link">#</a></h1>
 <h2 id="create-a-new-project">Create a new project<a class="headerlink" href="#create-a-new-project" title="Permanent link">#</a></h2>
 <p>Install common tools:
-- pdm or poetry: dependency management
+- pdm or poetry: dependency management (see <a href="#simple-projects">simple projects</a> if not required).
 - ruff: linter/formatter
 - pre-commit: git hooks for formatting and linting
 - px-utils: cross-platform file operations</p>
@@ -625,6 +643,25 @@
 <span class="n">pw</span> <span class="p">-</span><span class="n">-add</span> <span class="n">poetry</span><span class="p">,</span><span class="n">ruff</span><span class="p">,</span><span class="n">pre-commit</span><span class="p">,</span><span class="n">px-utils</span>
 <span class="n">pw</span> <span class="n">poetry</span> <span class="n">init</span>
 </code></pre></div>
+<h2 id="simple-projects">Simple projects<a class="headerlink" href="#simple-projects" title="Permanent link">#</a></h2>
+<p>If you don't need dependency management (f.e. when you don't have any dependencies),
+Pyprojectx can create your virtual environment and install test dependencies.</p>
+<div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx]</span>
+<span class="k">[tool.pyprojectx.main]</span>
+<span class="n">requirements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;pre-commit&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;black&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;isort&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mypy&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;px-utils&quot;</span><span class="p">]</span>
+<span class="n">post-install</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pre-commit install &amp;&amp; pw@ --install-context venv&quot;</span>
+
+<span class="k">[tool.pyprojectx.venv]</span>
+<span class="n">dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;@PROJECT_DIR/.venv&quot;</span>
+<span class="c1"># install your project in editable mode; this assumes that your project is installable</span>
+<span class="n">requirements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;pytest==8.0.0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-e .&quot;</span><span class="p">]</span>
+
+<span class="k">[tool.pyprojectx.aliases]</span>
+<span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;black src&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;isort src&quot;</span><span class="p">]</span>
+<span class="n">lint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;mypy --python-executable .venv/bin/python --no-incremental&quot;</span>
+<span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cmd</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;pytest&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ctx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;venv&quot;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p>After running any alias (f.e. <code>./pw test</code>), you can activate the virtual environment with <code>source .venv/bin/activate</code>.</p>
 <h2 id="build-scripts">Build scripts<a class="headerlink" href="#build-scripts" title="Permanent link">#</a></h2>
 <p>Script your development and build flow with aliases:</p>
 <ul>
