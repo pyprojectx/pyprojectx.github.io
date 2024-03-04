@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="assets/px.svg">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.4">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.12">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.50c56a3b.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.7e359304.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
@@ -318,10 +318,8 @@
     
     
     
-    
     <li class="md-nav__item md-nav__item--nested">
       
-        
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
@@ -614,8 +612,12 @@ not even Pyprojectx itself!</p>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># initialize a PDM project</span>
-./pw<span class="w"> </span>--add<span class="w"> </span>pdm
+./pw<span class="w"> </span>--add<span class="w"> </span>pdm,ruff,pre-commit,px-utils
 ./pw<span class="w"> </span>pdm<span class="w"> </span>init
+<span class="c1"># omit &#39;./pw&#39; by activating the tool context</span>
+<span class="nb">source</span><span class="w"> </span>.pyprojectx/main/activate
+pdm<span class="w"> </span>--version
+ruff<span class="w"> </span>check<span class="w"> </span>src
 <span class="c1"># initialize a poetry project</span>
 ./pw<span class="w"> </span>--add<span class="w"> </span>poetry
 ./pw<span class="w"> </span>poetry<span class="w"> </span>init
@@ -623,8 +625,12 @@ not even Pyprojectx itself!</p>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c"># initialize a PDM project</span>
-<span class="n">pw</span> <span class="p">-</span><span class="n">-add</span> <span class="n">pdm</span>
+<span class="n">pw</span> <span class="p">-</span><span class="n">-add</span> <span class="n">pdm</span><span class="p">,</span><span class="n">ruff</span><span class="p">,</span><span class="n">pre-commit</span><span class="p">,</span><span class="n">px-utils</span>
 <span class="n">pw</span> <span class="n">pdm</span> <span class="n">init</span>
+<span class="c"># omit &#39;pw&#39; by activating the tool context</span>
+<span class="n">source</span> <span class="p">.</span><span class="n">pyprojectx</span><span class="p">/</span><span class="n">main</span><span class="p">/</span><span class="n">activate</span>
+<span class="n">pdm</span> <span class="p">-</span><span class="n">-version</span>
+<span class="n">ruff</span> <span class="n">check</span> <span class="n">src</span>
 <span class="c"># initialize a poetry project</span>
 <span class="n">pw</span> <span class="p">-</span><span class="n">-add</span> <span class="n">poetry</span>
 <span class="n">pw</span> <span class="n">poetry</span> <span class="n">init</span>
@@ -658,6 +664,7 @@ This also works from subdirectories: <code>../../pw</code> can also be replaced 
 </div>
 </div>
 </div>
+<p>If you don't want to prefix every command with <code>px</code> or <code>./pw</code>, you <a href="/config/tools/#tool-context-activation">can activate a tool context</a>.</p>
 
 
 
@@ -734,10 +741,10 @@ This also works from subdirectories: <code>../../pw</code> can also be replaced 
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": [], "search": "assets/javascripts/workers/search.c011b7c0.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": [], "search": "assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.7389ff0e.min.js"></script>
+      <script src="assets/javascripts/bundle.c8d2eff1.min.js"></script>
       
     
   </body>

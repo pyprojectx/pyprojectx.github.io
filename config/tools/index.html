@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../assets/px.svg">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.4">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.12">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e359304.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -264,10 +264,8 @@
     
     
     
-    
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
-        
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
@@ -347,6 +345,15 @@
   <a href="#tool-contexts" class="md-nav__link">
     <span class="md-ellipsis">
       Tool contexts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tool-context-activation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tool context activation
     </span>
   </a>
   
@@ -587,6 +594,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#tool-context-activation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tool context activation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#tool-context-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       Tool context configuration
@@ -710,6 +726,17 @@ px<span class="w"> </span>black<span class="w"> </span>my_package<span class="w"
 <p>When running a command that has the same name as a tool context, the command will be executed by default inside the virtual environment of that tool context.
 Otherwise, the command will be executed in the virtual environment of the <em>main</em> tool context.</p>
 </div>
+<h2 id="tool-context-activation">Tool context activation<a class="headerlink" href="#tool-context-activation" title="Permanent link">#</a></h2>
+<p>If you don't want to prefix every command with <code>px</code> or <code>./pw</code>, you can activate a tool context.</p>
+<p>For example, to activate the <code>main</code> tool context run <code>source .pyprojectx/main/activate</code>.
+This makes all the tools in the <em>main</em> context available in your shell.</p>
+<p>Alternatively, you can add <em>.pyprojectx/main</em> to your <em>PATH</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Upgrading from Pyprojectx &lt; 2.1.0</p>
+<p>If the virtual environment of a tool cotext is already present, you will need to re-create it
+to use the new activation mechanism, either by removing the <em>.pyprojectx</em> directory or by running
+any command with the <code>--force-install</code> option, f.e. <code>./pw -f --install-context main</code>.</p>
+</div>
 <h2 id="tool-context-configuration">Tool context configuration<a class="headerlink" href="#tool-context-configuration" title="Permanent link">#</a></h2>
 <p>In its simplest form, a tool context is a multiline string or array of strings that adheres to pip's <a href="https://pip.pypa.io/en/stable/reference/requirements-file-format/#requirements-file-format">Requirements File Format</a></p>
 <p>Example:</p>
@@ -760,20 +787,21 @@ pre-commit is also initialised. This makes sure that pre-commit hooks are always
 <li>pinning tool versions in <em>pyproject.toml</em></li>
 </ul>
 <h3 id="creating-a-pwlock-file">Creating a <em>pw.lock</em> file<a class="headerlink" href="#creating-a-pwlock-file" title="Permanent link">#</a></h3>
-<p>When you run <code>px --lock</code>, a <em>pw.lock</em> file is created in the root directory of your project.
+<p>When you run <code>./pw --lock</code>, a <em>pw.lock</em> file is created in the root directory of your project.
 This file should be committed to version control.</p>
 <p>This is the recommended way to lock tool versions to guarantee reproducible builds (see <a href="/dev-dependencies/#the-unreliable-pip-install">why</a>)</p>
-<p>The lock file is automatically updated when the tool context requirements in <em>pyproject.toml</em> change
-or when you run <code>px --lock</code> again.</p>
+<p>The lock file is automatically updated when the tool context requirements in <em>pyproject.toml</em> change.</p>
+<p>To upgrade all tools to the latest version (respecting the requirements in <em>pyproject.toml</em>),
+combine the <em>lock</em> option with the <em>force-install</em> option: <code>./pw --lock -f</code>.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip: don't specify tool versions in <em>pyproject.toml</em> when using a <em>pw.lock</em> file</p>
 <p>When there is no version specified for a tool, the latest version will be installed and locked.
-Updating all tools to the latest version is then as simple as running <code>px --lock</code> again.
+Updating all tools to the latest version is then as simple as running <code>./pw --lock -f</code> again.
 In case of conflicts or issues with a new version, you can always revert to the previous version of the lock file.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Supporting multiple python versions</p>
-<p>Make sure to run <code>px --lock</code> using the minimum supported python version for your project.
+<p>Make sure to run <code>./pw --lock</code> using the minimum supported python version for your project.
 This prevents the lock file from containing dependencies that are incompatible with older python versions.</p>
 </div>
 <h3 id="pinning-tool-versions-in-pyprojecttoml">Pinning tool versions in <em>pyproject.toml</em><a class="headerlink" href="#pinning-tool-versions-in-pyprojecttoml" title="Permanent link">#</a></h3>
@@ -858,10 +886,10 @@ Be aware that even with a fixed version, <a href="/dev-dependencies/#the-unrelia
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.c011b7c0.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.7389ff0e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c8d2eff1.min.js"></script>
       
     
   </body>
