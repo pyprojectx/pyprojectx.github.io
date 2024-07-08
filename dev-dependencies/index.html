@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../assets/px.svg">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
     
     
       
@@ -502,7 +502,8 @@ reproducible builds.</p>
 <h1 id="the-unreliable-pip-install">The unreliable pip install<a class="headerlink" href="#the-unreliable-pip-install" title="Permanent link">#</a></h1>
 <p>One would expect that <code>pip install tool-x==1.2.3</code> always installs exactly the same version of <em>tool-x</em>.
 Unfortunately, this is not the case because a most python packages do not pin the versions of their dependencies.</p>
-<p>This means that released versions of tools <strong>can be broken at any time</strong> by a new release of one of their dependencies.</p>
+<p>This means that released versions of tools <strong>can be <a href="https://upcycled-code.com/blog/the-broken-version-breakdown">broken at any time</a></strong>
+by a new release of one of their dependencies.</p>
 <p>This is exactly what happened with <a href="https://github.com/pdm-project/pdm/issues/1883">PDM 2.5.3</a>.</p>
 <p>For this reason, all the dependencies of pyprojectx are locked when publishing to <a href="https://pypi.org/project/pyprojectx/">PyPI</a>.</p>
 
@@ -584,7 +585,7 @@ Unfortunately, this is not the case because a most python packages do not pin th
     <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      <script src="../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
     
   </body>

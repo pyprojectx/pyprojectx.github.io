@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../assets/px.svg">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
     
     
       
@@ -644,24 +644,31 @@
 <h2 id="simple-projects">Simple projects<a class="headerlink" href="#simple-projects" title="Permanent link">#</a></h2>
 <p>If you don't need dependency management (f.e. when you don't have any dependencies),
 Pyprojectx can create your virtual environment and install test dependencies.</p>
-<div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx]</span>
+<div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx.venv]</span>
+<span class="c1"># venv and .venv don&#39;t have any special meaning, you can choose any name</span>
+<span class="n">requirements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;-r pyproject.toml&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1"># install project.dependencies from pyproject.toml</span>
+<span class="w">    </span><span class="s2">&quot;pytest&quot;</span><span class="w"> </span><span class="c1"># test dependencies (keep your other dev dependencies in the main requirements)</span>
+<span class="p">]</span>
+<span class="n">dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;.venv&quot;</span>
+
 <span class="k">[tool.pyprojectx.main]</span>
-<span class="n">requirements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;pre-commit&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;black&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;isort&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mypy&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;px-utils&quot;</span><span class="p">]</span>
-<span class="n">post-install</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pre-commit install &amp;&amp; pw@ --install-context venv&quot;</span>
+<span class="n">requirements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ruff&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pre-commit&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;px-utils&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;httpie&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;build&quot;</span><span class="p">]</span>
+<span class="n">post-install</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pre-commit install&quot;</span>
 
-<span class="k">[tool.pyprojectx.venv]</span>
-<span class="n">dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;@PROJECT_DIR/.venv&quot;</span>
-<span class="c1"># install your project in editable mode; this assumes that your project is installable</span>
-<span class="n">requirements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;pytest==8.0.0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-e .&quot;</span><span class="p">]</span>
-
-<span class="k">[tool.pyprojectx.aliases]</span>
-<span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;black src&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;isort src&quot;</span><span class="p">]</span>
-<span class="n">lint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;mypy --python-executable .venv/bin/python --no-incremental&quot;</span>
+<span class="n">install</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pw@ --install-context venv&quot;</span>
 <span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cmd</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;pytest&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ctx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">&quot;venv&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ruff format&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ruff check --select I --fix&quot;</span><span class="p">]</span>
+<span class="n">lint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ruff check&quot;</span><span class="p">]</span>
+<span class="n">check</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;@lint&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;@test&quot;</span><span class="p">]</span>
+<span class="n">build</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;@install&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;@check&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;python -m build&quot;</span><span class="p">]</span>
+
+<span class="k">[build-system]</span>
+<span class="n">requires</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;setuptools&quot;</span><span class="p">]</span>
+<span class="n">build-backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;setuptools.build_meta&quot;</span>
 </code></pre></div>
-<p>After running any alias (f.e. <code>./pw test</code>), you can activate the virtual environment with <code>source .venv/bin/activate</code>.</p>
-<p>Use the <code>-f</code> of <code>--force-install</code> flag to recreate the virtual environment
-after changing the requirements in <code>[tool.pyprojectx.venv]</code>, f.e. run <code>./pw -f test</code>.</p>
+<p>After running any alias (f.e. <code>./pw test</code>), you can activate the virtual environment with <code>source .venv/bin/activate</code>.
+See also <a href="https://github.com/pyprojectx/px-demo/tree/simple">px-demo</a> for a full example.</p>
 <h2 id="build-scripts">Build scripts<a class="headerlink" href="#build-scripts" title="Permanent link">#</a></h2>
 <p>Script your development and build flow with aliases:</p>
 <ul>
@@ -879,7 +886,7 @@ context fro reproducible builds.</p>
     <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      <script src="../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
     
   </body>

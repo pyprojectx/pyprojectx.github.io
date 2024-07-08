@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../assets/px.svg">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
     
     
       
@@ -751,11 +751,18 @@ px<span class="w"> </span>http<span class="w"> </span>www.google.com
 <span class="c1"># HTTP/1.1 200 OK ...</span>
 </code></pre></div>
 <div class="admonition tip">
-<p class="admonition-title">Tip: Specify exact versions for tools that are critical in your build flow</p>
-<p>This makes sure that your build won't break when new versions of a tool are released.
-It also ensures that you can always rebuild older versions of your project that rely on older versions of tools
-(f.e. when building a patch release).</p>
+<p class="admonition-title">Tip: <a href="/config/tools/#locking-requirements">Lock</a> your tool requirements</p>
+<p>This makes sure that your build won't break when new versions of a tool are released,or when a
+<a href="https://upcycled-code.com/blog/the-broken-version-breakdown">tool is broken by a new release of one of its dependencies</a>.</p>
 </div>
+<p>You can also include requirements from a text file or <em>pyproject.toml</em> file with <code>-r</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx]</span>
+<span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;-r pyproject.toml&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-r dev-requirements.txt&quot;</span><span class="p">]</span>
+</code></pre></div>
+<p>If you want to install a prerelease version of a tool, you need to configure it:
+<div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx]</span>
+<span class="n">prerelease</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;allow&quot;</span>
+</code></pre></div></p>
 <h2 id="post-install-scripts">Post-install scripts<a class="headerlink" href="#post-install-scripts" title="Permanent link">#</a></h2>
 <p>In some situations it can be useful to perform additional actions after a tool has been installed.
 This is achieved by configuring both requirements and post-install scripts for a tool</p>
@@ -796,13 +803,8 @@ combine the <em>lock</em> option with the <em>force-install</em> option: <code>.
 <div class="admonition tip">
 <p class="admonition-title">Tip: don't specify tool versions in <em>pyproject.toml</em> when using a <em>pw.lock</em> file</p>
 <p>When there is no version specified for a tool, the latest version will be installed and locked.
-Updating all tools to the latest version is then as simple as running <code>./pw --lock -f</code> again.
+Updating all tools to the latest version is then as simple as running <code>./pw --lock</code> again.
 In case of conflicts or issues with a new version, you can always revert to the previous version of the lock file.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Supporting multiple python versions</p>
-<p>Make sure to run <code>./pw --lock</code> using the minimum supported python version for your project.
-This prevents the lock file from containing dependencies that are incompatible with older python versions.</p>
 </div>
 <h3 id="pinning-tool-versions-in-pyprojecttoml">Pinning tool versions in <em>pyproject.toml</em><a class="headerlink" href="#pinning-tool-versions-in-pyprojecttoml" title="Permanent link">#</a></h3>
 <p>You can also pin tool versions in <em>pyproject.toml</em>:</p>
@@ -889,7 +891,7 @@ Be aware that even with a fixed version, <a href="/dev-dependencies/#the-unrelia
     <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
     
   </body>

@@ -1,7 +1,8 @@
 usage: pw.py [-h] [--version] [--toml TOML] [--install-dir INSTALL_DIR]
-             [--force-install] [--install-context tool-context] [--verbose]
-             [--quiet] [--info] [--add [context:]<package>,<package>...]
-             [--lock] [--install-px] [--upgrade]
+             [--force-install] [--clean] [--install-context tool-context]
+             [--verbose] [--quiet] [--info]
+             [--add [context:]<package>,<package>...] [--lock] [--install-px]
+             [--upgrade]
              ...
 
 Execute commands or aliases defined in the [tool.pyprojectx] section of
@@ -20,15 +21,18 @@ options:
                         The directory where all tools (including pyprojectx)
                         are installed; defaults to the PYPROJECTX_INSTALL_DIR
                         environment value if set, else '.pyprojectx' in the
-                        same directory as the invoked pw script
+                        same directory as the invoked pw script.
   --force-install, -f   Force clean installation of the virtual environment
-                        used to run cmd, if any
+                        used to run cmd, if any.
+  --clean, -c           Clean .pyprojectx directory by removing all but the
+                        current versions of pyprojectx and context virtual
+                        environments.
   --install-context tool-context
                         Install a tool context without actually running any
                         command.
   --verbose, -v         Give more output. This option is additive and can be
                         used up to 2 times.
-  --quiet, -q           Suppress output
+  --quiet, -q           Suppress output.
   --info, -i            Show the configuration details of a command instead of
                         running it. If no command is specified, a list with
                         all available tools and aliases is shown.
