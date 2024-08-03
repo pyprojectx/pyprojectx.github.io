@@ -800,6 +800,15 @@ This file should be committed to version control.</p>
 <p>The lock file is automatically updated when the tool context requirements in <em>pyproject.toml</em> change.</p>
 <p>To upgrade all tools to the latest version (respecting the requirements in <em>pyproject.toml</em>),
 combine the <em>lock</em> option with the <em>force-install</em> option: <code>./pw --lock -f</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Supporting multiple Python versions</p>
+<p>When generating the lock file, the version of the current Python interpreter is used as minimum
+version that should be supported by the resolved requirements.
+You can override this by configuring the <em>lock-python-version</em>, e.g., <code>3.8</code> or <code>3.8.17</code>:
+<div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx]</span>
+<span class="n">lock-python-version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;3.8&quot;</span>
+</code></pre></div></p>
+</div>
 <div class="admonition tip">
 <p class="admonition-title">Tip: don't specify tool versions in <em>pyproject.toml</em> when using a <em>pw.lock</em> file</p>
 <p>When there is no version specified for a tool, the latest version will be installed and locked.
