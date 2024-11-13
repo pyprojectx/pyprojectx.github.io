@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../assets/px.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
     
     
       
@@ -498,7 +498,16 @@
         <li class="md-nav__item">
   <a href="#github-actions" class="md-nav__link">
     <span class="md-ellipsis">
-      Github actions
+      GitHub actions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-scripts-that-use-the-projects-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run scripts that use the project's packages
     </span>
   </a>
   
@@ -577,7 +586,16 @@
         <li class="md-nav__item">
   <a href="#github-actions" class="md-nav__link">
     <span class="md-ellipsis">
-      Github actions
+      GitHub actions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-scripts-that-use-the-projects-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run scripts that use the project's packages
     </span>
   </a>
   
@@ -757,11 +775,11 @@ the poetry <a href="https://github.com/pyprojectx/px-demo/tree/poetry">variant</
 This makes Poetry create a <code>.venv</code> in your project directory instead of somewhere in your home directory.
 It makes it easier to locate files and to keep your system clean when removing the project.</p>
 </div>
-<h2 id="github-actions">Github actions<a class="headerlink" href="#github-actions" title="Permanent link">#</a></h2>
-<p>By using the <code>pw</code> wrapper script, you can simplify your github actions:</p>
+<h2 id="github-actions">GitHub actions<a class="headerlink" href="#github-actions" title="Permanent link">#</a></h2>
+<p>By using the <code>pw</code> wrapper script, you can simplify your GitHub actions:</p>
 <ul>
 <li>no explicitly tool installations or docker images (for Python tools)</li>
-<li>use the same commands and scripts in github actions as on your laptop</li>
+<li>use the same commands and scripts in GitHub actions as on your laptop</li>
 </ul>
 <p>Some tips:</p>
 <ul>
@@ -790,10 +808,19 @@ It makes it easier to locate files and to keep your system clean when removing t
 </code></pre></div>
 See Pyprojectx own <a href="https://github.com/pyprojectx/pyprojectx/blob/main/.github/workflows/build.yml">build</a>
 and <a href="https://github.com/pyprojectx/pyprojectx/blob/main/.github/workflows/release.yml">release</a> workflows for a full example.</p>
+<h2 id="run-scripts-that-use-the-projects-packages">Run scripts that use the project's packages<a class="headerlink" href="#run-scripts-that-use-the-projects-packages" title="Permanent link">#</a></h2>
+<p>You can set up a tool context that includes the project code and dependencies by using an editable install.
+Then you can make that context the default one for running scripts.</p>
+<p><div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx]</span>
+<span class="n">scripts_ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;project&quot;</span>
+<span class="c1"># install the current project in editable mode; this requires that your project is installable</span>
+<span class="n">project</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;-e .&quot;</span><span class="p">]</span><span class="w"> </span><span class="c1"># you can add more dependencies here but editable installs are not locked (see note below)</span>
+</code></pre></div>
+Having a script <code>my-script.py</code> in the scripts directory, you can just run <code>px my-script</code> or even <code>px mS</code>.</p>
 <h2 id="experiment-with-your-project-in-a-jupyter-notebook">Experiment with your project in a Jupyter notebook<a class="headerlink" href="#experiment-with-your-project-in-a-jupyter-notebook" title="Permanent link">#</a></h2>
 <p>You can launch a notebook that has access to your project packages without the need to install anything upfront.</p>
 <p><div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx]</span>
-<span class="c1"># install the current project in editable mode, together with jupyter</span>
+<span class="c1"># install the current project in editable mode, together with jupyter; this requires that your project is installable</span>
 <span class="n">jupyter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;jupyterlab&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-e .&quot;</span><span class="p">]</span>
 
 <span class="k">[tool.pyprojectx.aliases]</span>

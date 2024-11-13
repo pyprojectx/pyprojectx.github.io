@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../assets/px.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
     
     
       
@@ -490,12 +490,21 @@
 <p>Logic that is too complex to embed in <em>pyproject.toml</em> can be written in Python scripts in the <em>bin</em> directory.
 These can be called from aliases or from the command line with <code>pw &lt;script-name&gt;</code>.</p>
 <p>The scripts run by default in the main tool context and hence can use all libraries installed in the main tool context.</p>
-<p>To run a script in a different tool context, you need to define an alias:</p>
+<p>To run a script in a different tool context, you either:</p>
+<ul>
+<li>define an alias:</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx.aliases]</span>
 <span class="c1"># run the generate-data script in the &#39;jupyter&#39; tool context</span>
 <span class="n">generate-data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cmd</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s1">&#39;generate-data&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ctx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s1">&#39;jupyter&#39;</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
-<p>The script directory can be changed with the <code>scripts_dir</code> option in <em>pyproject.toml</em>:</p>
+<ul>
+<li>or specify the <code>scripts_ctx</code> in <em>pyproject.toml</em> (see <a href="/recipes/#run-scripts-that-use-the-projects-packages">recipes</a>) :</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx]</span>
+<span class="n">scripts_ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;scripts&quot;</span>
+</code></pre></div>
+<p>The default script directory can be changed by specifying the <code>scripts_dir</code> in <em>pyproject.toml</em>:</p>
 <div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx]</span>
 <span class="n">scripts_dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;scripts&quot;</span>
 </code></pre></div>
