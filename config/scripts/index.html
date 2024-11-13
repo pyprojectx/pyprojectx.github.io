@@ -499,12 +499,12 @@ These can be called from aliases or from the command line with <code>pw &lt;scri
 <span class="n">generate-data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cmd</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s1">&#39;generate-data&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ctx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s1">&#39;jupyter&#39;</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <ul>
-<li>or specify the <code>scripts_ctx</code> in <em>pyproject.toml</em> (see <a href="/recipes/#run-scripts-that-use-the-projects-packages">recipes</a>) :</li>
+<li>or specify the <code>scripts_ctx</code> in <em>pyproject.toml</em> (see <a href="/recipes#run-scripts-that-use-the-projects-packages">recipes</a>) :</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx]</span>
 <span class="n">scripts_ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;scripts&quot;</span>
 </code></pre></div>
-<p>The default script directory can be changed by specifying the <code>scripts_dir</code> in <em>pyproject.toml</em>:</p>
+<p>The default script directory (<em>bin</em>) can be changed by specifying the <code>scripts_dir</code> in <em>pyproject.toml</em>:</p>
 <div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx]</span>
 <span class="n">scripts_dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;scripts&quot;</span>
 </code></pre></div>

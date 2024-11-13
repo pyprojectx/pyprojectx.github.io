@@ -751,7 +751,7 @@ px<span class="w"> </span>http<span class="w"> </span>www.google.com
 <span class="c1"># HTTP/1.1 200 OK ...</span>
 </code></pre></div>
 <div class="admonition tip">
-<p class="admonition-title">Tip: <a href="/config/tools/#locking-requirements">Lock</a> your tool requirements</p>
+<p class="admonition-title">Tip: <a href="#locking-requirements">Lock</a> your tool requirements</p>
 <p>This makes sure that your build won't break when new versions of a tool are released,or when a
 <a href="https://upcycled-code.com/blog/the-broken-version-breakdown">tool is broken by a new release of one of its dependencies</a>.</p>
 </div>
@@ -796,7 +796,7 @@ pre-commit is also initialised. This makes sure that pre-commit hooks are always
 <h3 id="creating-a-pwlock-file">Creating a <em>pw.lock</em> file<a class="headerlink" href="#creating-a-pwlock-file" title="Permanent link">#</a></h3>
 <p>When you run <code>./pw --lock</code>, a <em>pw.lock</em> file is created in the root directory of your project.
 This file should be committed to version control.</p>
-<p>This is the recommended way to lock tool versions to guarantee reproducible builds (see <a href="/dev-dependencies/#the-unreliable-pip-install">why</a>)</p>
+<p>This is the recommended way to lock tool versions to guarantee reproducible builds (see <a href="/dev-dependencies#the-unreliable-pip-install">why</a>)</p>
 <p>The lock file is automatically updated when the tool context requirements in <em>pyproject.toml</em> change.</p>
 <p>To upgrade all tools to the latest version (respecting the requirements in <em>pyproject.toml</em>),
 combine the <em>lock</em> option with the <em>force-install</em> option: <code>./pw --lock -f</code>.</p>
@@ -820,7 +820,7 @@ In case of conflicts or issues with a new version, you can always revert to the 
 <p><div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx]</span>
 <span class="n">main</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;pdm==2.11.2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ruff==0.1.11&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pre-commit==3.6.0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;px-utils==1.0.1&quot;</span><span class="p">]</span>
 </code></pre></div>
-Be aware that even with a fixed version, <a href="/dev-dependencies/#the-unreliable-pip-install">tools can break at future installs</a>!</p>
+Be aware that even with a fixed version, <a href="/dev-dependencies#the-unreliable-pip-install">tools can break at future installs</a>!</p>
 
 
 
