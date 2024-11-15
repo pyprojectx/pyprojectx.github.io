@@ -475,6 +475,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Create a new project">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uv-based-projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      uv based projects
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pdm-or-poetry-based-projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      PDM or Poetry based projects
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -563,6 +587,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Create a new project">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uv-based-projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      uv based projects
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pdm-or-poetry-based-projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      PDM or Poetry based projects
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -631,33 +679,83 @@
 <h1 id="recipes">Recipes<a class="headerlink" href="#recipes" title="Permanent link">#</a></h1>
 <h2 id="create-a-new-project">Create a new project<a class="headerlink" href="#create-a-new-project" title="Permanent link">#</a></h2>
 <p>Install common tools:
-- pdm or poetry: dependency management (see <a href="#simple-projects">simple projects</a> if not required).
+- uv, pdm or poetry: dependency management
 - ruff: linter/formatter
 - pre-commit: git hooks for formatting and linting
 - px-utils: cross-platform file operations</p>
+<h3 id="uv-based-projects">uv based projects<a class="headerlink" href="#uv-based-projects" title="Permanent link">#</a></h3>
+<p><code>uv</code> only allows to initialize a project when there is no <code>pyproject.toml</code> present in the project dir.
+Fortunately, uv is available by default in the main tool context, so we can use it to initialize the project.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Linux/Mac</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
 </div>
-<div class="highlight"><pre><span></span><code><span class="c1"># initialize a PDM project</span>
-./pw<span class="w"> </span>--add<span class="w"> </span>pdm,ruff,pre-commit,px-utils
-./pw<span class="w"> </span>pdm<span class="w"> </span>init
-<span class="c1"># initialize a poetry project</span>
-./pw<span class="w"> </span>--add<span class="w"> </span>poetry,ruff,pre-commit,px-utils
-./pw<span class="w"> </span>poetry<span class="w"> </span>init
+<div class="highlight"><pre><span></span><code><span class="c1"># download the wrapper scripts</span>
+curl<span class="w"> </span>-LO<span class="w"> </span>https://github.com/pyprojectx/pyprojectx/releases/latest/download/wrappers.zip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>unzip<span class="w"> </span>-o<span class="w"> </span>wrappers.zip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>wrappers.zip
+<span class="c1"># initialize a uv project in a (empty) directory without pyproject.toml</span>
+./pw<span class="w"> </span>uv<span class="w"> </span>init
+<span class="c1"># add common tools to the project, including uv</span>
+./pw<span class="w"> </span>--add<span class="w"> </span>uv,ruff,pre-commit,px-utils
+<span class="c1"># have uv create the virtual environment and install the dependencies</span>
+./pw<span class="w"> </span>uv<span class="w"> </span>sync
+<span class="c1"># call the hello script to show that the project is set up correctly</span>
+./pw<span class="w"> </span>uv<span class="w"> </span>run<span class="w"> </span>hello.py
+<span class="c1"># lock the tool versions for reproducible builds</span>
+./pw<span class="w"> </span>--lock
 </code></pre></div>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Windows</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
 </div>
-<div class="highlight"><pre><span></span><code><span class="c"># initialize a PDM project</span>
+<div class="highlight"><pre><span></span><code><span class="c"># download the wrapper scripts</span>
+<span class="nb">Invoke-WebRequest</span> <span class="n">https</span><span class="p">://</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">pyprojectx</span><span class="p">/</span><span class="n">pyprojectx</span><span class="p">/</span><span class="n">releases</span><span class="p">/</span><span class="n">latest</span><span class="p">/</span><span class="n">download</span><span class="p">/</span><span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span> <span class="n">-OutFile</span> <span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span><span class="p">;</span> <span class="nb">Expand-Archive</span> <span class="n">-Force</span> <span class="n">-Path</span> <span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span> <span class="n">-DestinationPath</span> <span class="p">.;</span> <span class="nb">Remove-Item</span> <span class="n">-Path</span> <span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span>
+<span class="c"># initialize a uv project in a (empty) directory without pyproject.toml</span>
+<span class="n">pw</span> <span class="n">uv</span> <span class="n">init</span>
+<span class="c"># add common tools to the project, including uv</span>
+<span class="n">pw</span> <span class="p">-</span><span class="n">-add</span> <span class="n">uv</span><span class="p">,</span><span class="n">ruff</span><span class="p">,</span><span class="n">pre-commit</span><span class="p">,</span><span class="n">px-utils</span>
+<span class="c"># have uv create the virtual environment and install the dependencies</span>
+<span class="n">pw</span> <span class="n">uv</span> <span class="n">sync</span>
+<span class="c"># call the hello script to show that the project is set up correctly</span>
+<span class="n">pw</span> <span class="n">uv</span> <span class="n">run</span> <span class="n">hello</span><span class="p">.</span><span class="n">py</span>
+<span class="c"># lock the tool versions for reproducible builds</span>
+<span class="p">./</span><span class="n">pw</span> <span class="p">-</span><span class="n">-lock</span>
+</code></pre></div>
+<p>You can run <code>./pw uv init --help</code> to see the available options or consult the <a href="https://docs.astral.sh/uv/reference/cli/#uv-init">uv documentation</a>.
+See also <a href="https://github.com/pyprojectx/px-demo">px-demo</a> for a full example.</p>
+<h3 id="pdm-or-poetry-based-projects">PDM or Poetry based projects<a class="headerlink" href="#pdm-or-poetry-based-projects" title="Permanent link">#</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Linux/Mac</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="c1"># download the wrapper scripts</span>
+curl<span class="w"> </span>-LO<span class="w"> </span>https://github.com/pyprojectx/pyprojectx/releases/latest/download/wrappers.zip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>unzip<span class="w"> </span>-o<span class="w"> </span>wrappers.zip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>wrappers.zip
+<span class="c1"># initialize a PDM project</span>
+./pw<span class="w"> </span>--add<span class="w"> </span>pdm,ruff,pre-commit,px-utils
+./pw<span class="w"> </span>pdm<span class="w"> </span>init
+<span class="c1"># initialize a poetry project</span>
+./pw<span class="w"> </span>--add<span class="w"> </span>poetry,ruff,pre-commit,px-utils
+./pw<span class="w"> </span>poetry<span class="w"> </span>init
+<span class="c1"># lock the tool versions for reproducible builds</span>
+./pw<span class="w"> </span>--lock
+</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Windows</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="highlight"><pre><span></span><code><span class="c"># download the wrapper scripts</span>
+<span class="nb">Invoke-WebRequest</span> <span class="n">https</span><span class="p">://</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">pyprojectx</span><span class="p">/</span><span class="n">pyprojectx</span><span class="p">/</span><span class="n">releases</span><span class="p">/</span><span class="n">latest</span><span class="p">/</span><span class="n">download</span><span class="p">/</span><span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span> <span class="n">-OutFile</span> <span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span><span class="p">;</span> <span class="nb">Expand-Archive</span> <span class="n">-Force</span> <span class="n">-Path</span> <span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span> <span class="n">-DestinationPath</span> <span class="p">.;</span> <span class="nb">Remove-Item</span> <span class="n">-Path</span> <span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span>
+<span class="c"># initialize a PDM project</span>
 <span class="n">pw</span> <span class="p">-</span><span class="n">-add</span> <span class="n">pdm</span><span class="p">,</span><span class="n">ruff</span><span class="p">,</span><span class="n">pre-commit</span><span class="p">,</span><span class="n">px-utils</span>
 <span class="n">pw</span> <span class="n">pdm</span> <span class="n">init</span>
 <span class="c"># initialize a poetry project</span>
 <span class="n">pw</span> <span class="p">-</span><span class="n">-add</span> <span class="n">poetry</span><span class="p">,</span><span class="n">ruff</span><span class="p">,</span><span class="n">pre-commit</span><span class="p">,</span><span class="n">px-utils</span>
 <span class="n">pw</span> <span class="n">poetry</span> <span class="n">init</span>
+<span class="c"># lock the tool versions for reproducible builds</span>
+<span class="p">./</span><span class="n">pw</span> <span class="p">-</span><span class="n">-lock</span>
 </code></pre></div>
 <h2 id="simple-projects">Simple projects<a class="headerlink" href="#simple-projects" title="Permanent link">#</a></h2>
 <p>If you don't need dependency management (f.e. when you don't have any dependencies),
@@ -665,7 +763,7 @@ Pyprojectx can create your virtual environment and install test dependencies.</p
 <div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx.venv]</span>
 <span class="c1"># venv and .venv don&#39;t have any special meaning, you can choose any name</span>
 <span class="n">requirements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;-r pyproject.toml&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1"># install project.dependencies from pyproject.toml</span>
+<span class="w">    </span><span class="s2">&quot;-r pyproject.toml&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1"># optional: install project.dependencies from pyproject.toml</span>
 <span class="w">    </span><span class="s2">&quot;pytest&quot;</span><span class="w"> </span><span class="c1"># test dependencies (keep your other dev dependencies in the main requirements)</span>
 <span class="p">]</span>
 <span class="n">dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;.venv&quot;</span>
@@ -703,7 +801,7 @@ See also <a href="https://github.com/pyprojectx/px-demo/tree/simple">px-demo</a>
 </ul>
 <p>With this combination, you can most likely skip makefiles altogether.</p>
 <p>Example:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">PDM</label><label for="__tabbed_3_2">Poetry</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">PDM</label><label for="__tabbed_5_2">Poetry</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx]</span>
@@ -809,12 +907,15 @@ It makes it easier to locate files and to keep your system clean when removing t
 See Pyprojectx own <a href="https://github.com/pyprojectx/pyprojectx/blob/main/.github/workflows/build.yml">build</a>
 and <a href="https://github.com/pyprojectx/pyprojectx/blob/main/.github/workflows/release.yml">release</a> workflows for a full example.</p>
 <h2 id="run-scripts-that-use-the-projects-packages">Run scripts that use the project's packages<a class="headerlink" href="#run-scripts-that-use-the-projects-packages" title="Permanent link">#</a></h2>
-<p>You can set up a tool context that includes the project code and dependencies by using an editable install.
+<p>You can set up a tool context that uses the project's virtual environment to run scripts.
 Then you can make that context the default one for running scripts.</p>
 <p><div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx]</span>
-<span class="n">scripts_ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;project&quot;</span>
-<span class="c1"># install the current project in editable mode; this requires that your project is installable</span>
-<span class="n">project</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;-e .&quot;</span><span class="p">]</span><span class="w"> </span><span class="c1"># you can add more dependencies here but editable installs are not locked (see note below)</span>
+<span class="n">scripts_ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;venv&quot;</span>
+<span class="k">[tool.pyprojectx.venv]</span>
+<span class="n">dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;.venv&quot;</span><span class="w"> </span><span class="c1"># not (directly) managed by pyprojectx</span>
+<span class="n">post-install</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;install&quot;</span><span class="w"> </span><span class="c1"># optional: make sure the venv is ready to use</span>
+<span class="k">[tool.pyprojectx.aliases]</span>
+<span class="n">install</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;uv sync&quot;</span><span class="w"> </span><span class="c1"># optional: initialize the project&#39;s virtual environment using your preferred tool</span>
 </code></pre></div>
 Having a script <code>my-script.py</code> in the scripts directory, you can just run <code>px my-script</code> or even <code>px mS</code>.</p>
 <h2 id="experiment-with-your-project-in-a-jupyter-notebook">Experiment with your project in a Jupyter notebook<a class="headerlink" href="#experiment-with-your-project-in-a-jupyter-notebook" title="Permanent link">#</a></h2>
