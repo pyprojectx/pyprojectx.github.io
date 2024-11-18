@@ -947,7 +947,7 @@ Then you can make that context the default one for running scripts.</p>
 <span class="n">scripts_ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;venv&quot;</span>
 <span class="k">[tool.pyprojectx.venv]</span>
 <span class="n">dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;.venv&quot;</span><span class="w"> </span><span class="c1"># not (directly) managed by pyprojectx</span>
-<span class="n">post-install</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;install&quot;</span><span class="w"> </span><span class="c1"># optional: make sure the venv is ready to use</span>
+<span class="n">post-install</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;@install&quot;</span><span class="w"> </span><span class="c1"># optional: make sure the venv is ready to use</span>
 <span class="k">[tool.pyprojectx.aliases]</span>
 <span class="n">install</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;uv sync&quot;</span><span class="w"> </span><span class="c1"># optional: initialize the project&#39;s virtual environment using your preferred tool</span>
 </code></pre></div>
