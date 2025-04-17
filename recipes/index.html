@@ -745,11 +745,9 @@
 <h3 id="uv-based-projects">uv based projects<a class="headerlink" href="#uv-based-projects" title="Permanent link">#</a></h3>
 <p><code>uv</code> only allows to initialize a project when there is no <code>pyproject.toml</code> present in the project dir.
 Fortunately, uv is available by default in the main tool context, so we can use it to initialize the project.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Linux/Mac</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Linux/Mac</label><label for="__tabbed_1_2">Windows</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># download the wrapper scripts</span>
 curl<span class="w"> </span>-LO<span class="w"> </span>https://github.com/pyprojectx/pyprojectx/releases/latest/download/wrappers.zip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>unzip<span class="w"> </span>-o<span class="w"> </span>wrappers.zip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>wrappers.zip
 <span class="c1"># initialize a uv project in a (empty) directory without pyproject.toml</span>
@@ -763,11 +761,8 @@ curl<span class="w"> </span>-LO<span class="w"> </span>https://github.com/pyproj
 <span class="c1"># lock the tool versions for reproducible builds</span>
 ./pw<span class="w"> </span>--lock
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Windows</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c"># download the wrapper scripts</span>
 <span class="nb">Invoke-WebRequest</span> <span class="n">https</span><span class="p">://</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">pyprojectx</span><span class="p">/</span><span class="n">pyprojectx</span><span class="p">/</span><span class="n">releases</span><span class="p">/</span><span class="n">latest</span><span class="p">/</span><span class="n">download</span><span class="p">/</span><span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span> <span class="n">-OutFile</span> <span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span><span class="p">;</span> <span class="nb">Expand-Archive</span> <span class="n">-Force</span> <span class="n">-Path</span> <span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span> <span class="n">-DestinationPath</span> <span class="p">.;</span> <span class="nb">Remove-Item</span> <span class="n">-Path</span> <span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span>
 <span class="c"># initialize a uv project in a (empty) directory without pyproject.toml</span>
@@ -781,14 +776,15 @@ curl<span class="w"> </span>-LO<span class="w"> </span>https://github.com/pyproj
 <span class="c"># lock the tool versions for reproducible builds</span>
 <span class="n">pw</span> <span class="p">-</span><span class="n">-lock</span>
 </code></pre></div>
+</div>
+</div>
+</div>
 <p>You can run <code>./pw uv init --help</code> to see the available options or consult the <a href="https://docs.astral.sh/uv/reference/cli/#uv-init">uv documentation</a>.
 See also <a href="https://github.com/pyprojectx/px-demo">px-demo</a> for a full example.</p>
 <h3 id="pdm-or-poetry-based-projects">PDM or Poetry based projects<a class="headerlink" href="#pdm-or-poetry-based-projects" title="Permanent link">#</a></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Linux/Mac</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Linux/Mac</label><label for="__tabbed_2_2">Windows</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block"></div>
-</div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1"># download the wrapper scripts</span>
 curl<span class="w"> </span>-LO<span class="w"> </span>https://github.com/pyprojectx/pyprojectx/releases/latest/download/wrappers.zip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>unzip<span class="w"> </span>-o<span class="w"> </span>wrappers.zip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>wrappers.zip
 <span class="c1"># initialize a PDM project</span>
@@ -800,11 +796,8 @@ curl<span class="w"> </span>-LO<span class="w"> </span>https://github.com/pyproj
 <span class="c1"># lock the tool versions for reproducible builds</span>
 ./pw<span class="w"> </span>--lock
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Windows</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block"></div>
 </div>
-</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c"># download the wrapper scripts</span>
 <span class="nb">Invoke-WebRequest</span> <span class="n">https</span><span class="p">://</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">pyprojectx</span><span class="p">/</span><span class="n">pyprojectx</span><span class="p">/</span><span class="n">releases</span><span class="p">/</span><span class="n">latest</span><span class="p">/</span><span class="n">download</span><span class="p">/</span><span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span> <span class="n">-OutFile</span> <span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span><span class="p">;</span> <span class="nb">Expand-Archive</span> <span class="n">-Force</span> <span class="n">-Path</span> <span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span> <span class="n">-DestinationPath</span> <span class="p">.;</span> <span class="nb">Remove-Item</span> <span class="n">-Path</span> <span class="n">wrappers</span><span class="p">.</span><span class="n">zip</span>
 <span class="c"># initialize a PDM project</span>
@@ -816,6 +809,9 @@ curl<span class="w"> </span>-LO<span class="w"> </span>https://github.com/pyproj
 <span class="c"># lock the tool versions for reproducible builds</span>
 <span class="p">./</span><span class="n">pw</span> <span class="p">-</span><span class="n">-lock</span>
 </code></pre></div>
+</div>
+</div>
+</div>
 <h2 id="simple-projects">Simple projects<a class="headerlink" href="#simple-projects" title="Permanent link">#</a></h2>
 <p>If you don't need dependency management (f.e. when you don't have any dependencies),
 Pyprojectx can create your virtual environment and install test dependencies.</p>
@@ -852,16 +848,44 @@ See also <a href="https://github.com/pyprojectx/px-demo/tree/simple">px-demo</a>
 <li>package and publish to pypi</li>
 <li>...</li>
 </ul>
-<p>Use <a href="https://python-poetry.org/">Poetry</a> or <a href="https://pdm.fming.dev/">PDM</a> to further streamline your development flow with:</p>
+<p>Use <a href="https://docs.astral.sh/uv/">uv</a> (or alternatively <a href="https://python-poetry.org/">Poetry</a> or <a href="https://pdm.fming.dev/">PDM</a>) to further streamline your development flow with:</p>
 <ul>
 <li>better dependency management and version locking compared with pip requirement files</li>
-<li>virtual environment management (or skip a virtual environment all together when using PDM)</li>
+<li>virtual environment management</li>
 <li>packaging and publishing</li>
 </ul>
 <p>With this combination, you can most likely skip makefiles altogether.</p>
 <p>Example:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">PDM</label><label for="__tabbed_5_2">Poetry</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">uv</label><label for="__tabbed_3_2">PDM</label><label for="__tabbed_3_3">Poetry</label></div>
 <div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx]</span>
+<span class="k">[tool.pyprojectx.main]</span>
+<span class="n">requirements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;uv&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ruff&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pre-commit&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;px-utils&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mkdocs&quot;</span><span class="w"> </span><span class="p">]</span>
+<span class="c1"># the first time that a uv command is invoked, we make sure that pre-commit hooks are installed, so we can&#39;t forget it</span>
+<span class="n">post-install</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pre-commit install&quot;</span>
+<span class="k">[tool.pyprojectx.aliases]</span>
+<span class="c1"># create the virtual environment and install all dependencies</span>
+<span class="n">install</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;uv sync&quot;</span>
+<span class="c1"># run a command in the project&#39;s virtual environment</span>
+<span class="n">run</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;uv run&quot;</span>
+<span class="c1"># show outdated dependencies</span>
+<span class="n">outdated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;uv pip list --outdated&quot;</span>
+<span class="n">clean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;pxrm .venv .pytest_cache dist .ruff_cache&quot;</span>
+<span class="n">full-clean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;@clean&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;pxrm .pyprojectx&quot;</span><span class="p">]</span>
+<span class="c1"># format code and sort imports</span>
+<span class="n">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ruff format&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ruff check --select I --fix&quot;</span><span class="p">]</span>
+<span class="n">lint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;ruff check&quot;</span><span class="p">]</span>
+<span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;@run pytest&quot;</span>
+<span class="c1"># run check before pushing to git and your build will never break</span>
+<span class="n">check</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;@lint&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;@test&quot;</span><span class="p">]</span>
+<span class="c1"># run the same build command on your laptop or CI/CD server</span>
+<span class="n">build</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;@install&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;@check&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;uv build&quot;</span><span class="w"> </span><span class="p">]</span>
+<span class="c1"># extract complexity from your CI/CD flows to test/run them locally</span>
+<span class="c1"># use comprehensible python scripts (bin/prep-release) instead of complex shell scripts</span>
+<span class="n">release</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;prep-release&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;uv publish --username __token__&quot;</span><span class="p">]</span>
+</code></pre></div>
+</div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">[tool.pyprojectx]</span>
 <span class="k">[tool.pyprojectx.main]</span>
