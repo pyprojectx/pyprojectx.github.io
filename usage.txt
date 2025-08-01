@@ -45,5 +45,4 @@ options:
   --lock                Write all dependencies of all tool contexts to
                         'pw.lock' to guarantee reproducible outcomes.
   --install-px          Install the px and pxg scripts in your home directory.
-  --upgrade             Print instructions to download the latest pyprojectx
-                        wrapper scripts.
+  --upgrade             Download the latest pyprojectx wrapper scripts.
